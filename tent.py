@@ -1,9 +1,11 @@
 from copy import deepcopy
-
 import torch
 import torch.nn as nn
 import torch.jit
 
+################################################################
+# Original TENT code (unchanged)                               
+################################################################
 
 class Tent(nn.Module):
     """Tent adapts a model by entropy minimization during testing.
@@ -47,19 +49,111 @@ def softmax_entropy(x: torch.Tensor) -> torch.Tensor:
 
 @torch.enable_grad()  # ensure grads in possible no grad context for testing
 def forward_and_adapt(x, model, optimizer):
-    """Forward and adapt model on batch of data.
+    """Forward and adapt model on batch of data (original TENT).
 
     Measure entropy of the model prediction, take gradients, and update params.
     """
     # forward
     outputs = model(x)
-    # adapt
+    # adapt using TENT's entropy
     loss = softmax_entropy(outputs).mean(0)
     loss.backward()
     optimizer.step()
     optimizer.zero_grad()
     return outputs
 
+
+################################################################
+# New Proxy-Loss Code                                          
+################################################################
+
+@torch.enable_grad()
+def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, proxy_loss_fn, epoch: int) -> torch.Tensor:
+    """
+    Forward pass using student & teacher models and adapt the student model
+    using the proxy loss (instead of TENT's entropy).
+
+    Args:
+      x (Tensor): input batch.
+      student_model (nn.Module): model that should be updated at test time.
+      teacher_model (nn.Module): teacher model (usually fixed or momentum-updated).
+      optimizer (Optimizer): updates BN (and proxy) parameters.
+      proxy_loss_fn (nn.Module): an instance of neighbor_proj_loss.
+      epoch (int): epoch-like variable if needed by proxy_loss_fn.
+
+    Returns:
+      Tensor: the student model's output embedding for the batch.
+    """
+    # Student forward.
+    student_out = student_model(x)
+
+    # Teacher forward (no grad).
+    with torch.no_grad():
+        teacher_out = teacher_model(x)
+
+    # Compute the proxy loss (note: idx and y are no longer used).
+    loss_dict = proxy_loss_fn(student_out, teacher_out, epoch)
+    loss = loss_dict['loss']
+
+    # Backpropagation & update.
+    loss.backward()
+    optimizer.step()
+    optimizer.zero_grad()
+
+    return student_out
+
+
+class TentProxy(nn.Module):
+    """
+    TentProxy adapts a model by proxy loss during testing,
+    similar to TENT but uses forward_and_adapt_proxy instead of entropy minimization.
+
+    This class parallels the Tent class, preserving episodic resets if needed.
+    By default, it expects that you have already configured the optimizer
+    to update only BN parameters (and optionally proxy parameters).
+    """
+
+    def __init__(self, student_model, teacher_model, proxy_loss_fn, optimizer,
+                 steps=1, episodic=False, epoch=0):
+        super().__init__()
+        self.student_model = student_model
+        self.teacher_model = teacher_model
+        self.proxy_loss_fn = proxy_loss_fn
+        self.optimizer = optimizer
+        self.steps = steps
+        assert steps > 0, "TentProxy requires >= 1 step(s)"
+        self.episodic = episodic
+        self.epoch = epoch  # epoch-like variable if needed by proxy_loss_fn
+
+        # Copy initial states so we can reset if episodic is True.
+        self.model_state, self.optimizer_state = \
+            copy_model_and_optimizer(self.student_model, self.optimizer)
+
+    def forward(self, x) -> torch.Tensor:
+        if self.episodic:
+            self.reset()
+
+        for _ in range(self.steps):
+            outputs = forward_and_adapt_proxy(
+                x=x,
+                student_model=self.student_model,
+                teacher_model=self.teacher_model,
+                optimizer=self.optimizer,
+                proxy_loss_fn=self.proxy_loss_fn,
+                epoch=self.epoch
+            )
+        return outputs
+
+    def reset(self):
+        if self.model_state is None or self.optimizer_state is None:
+            raise Exception("cannot reset without saved model/optimizer state")
+        load_model_and_optimizer(self.student_model, self.optimizer,
+                                 self.model_state, self.optimizer_state)
+
+
+################################################################
+# Helper functions (unchanged)                                  
+################################################################
 
 def collect_params(model):
     """Collect the affine scale + shift parameters from batch norms.
@@ -94,16 +188,18 @@ def load_model_and_optimizer(model, optimizer, model_state, optimizer_state):
 
 
 def configure_model(model):
-    """Configure model for use with tent."""
-    # train mode, because tent optimizes the model to minimize entropy
+    """Configure model for use with tent (or tent-proxy).
+
+    - train mode
+    - disable grad for entire model
+    - re-enable grad for BN parameters
+    - force batch stats usage
+    """
     model.train()
-    # disable grad, to (re-)enable only what tent updates
     model.requires_grad_(False)
-    # configure norm for tent updates: enable grad + force batch statisics
     for m in model.modules():
         if isinstance(m, nn.BatchNorm2d):
             m.requires_grad_(True)
-            # force use of batch stats in train and eval modes
             m.track_running_stats = False
             m.running_mean = None
             m.running_var = None
@@ -111,15 +207,14 @@ def configure_model(model):
 
 
 def check_model(model):
-    """Check model for compatability with tent."""
+    """Check model for compatibility with tent."""
     is_training = model.training
     assert is_training, "tent needs train mode: call model.train()"
     param_grads = [p.requires_grad for p in model.parameters()]
     has_any_params = any(param_grads)
     has_all_params = all(param_grads)
-    assert has_any_params, "tent needs params to update: " \
-                           "check which require grad"
-    assert not has_all_params, "tent should not update all params: " \
-                               "check which require grad"
+    assert has_any_params, "tent needs params to update: check which require grad"
+    assert not has_all_params, ("tent should not update all params: "
+                                "check which require grad")
     has_bn = any([isinstance(m, nn.BatchNorm2d) for m in model.modules()])
     assert has_bn, "tent needs normalization for its optimization"

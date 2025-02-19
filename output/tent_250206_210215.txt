@@ -1,0 +1,313 @@
+[25/02/06 21:02:15] [conf.py:  208]: PyTorch Version: torch=1.12.1+cu113, cuda=11.3, cudnn=8302
+[25/02/06 21:02:15] [conf.py:  210]: BN:
+  EPS: 1e-05
+  MOM: 0.1
+CKPT_DIR: ./ckpt
+CORRUPTION:
+  DATASET: cifar10
+  NUM_EX: 10000
+  SEVERITY: [5, 4, 3, 2, 1]
+  TYPE: ['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']
+CUDNN:
+  BENCHMARK: True
+DATA_DIR: ./data
+DESC: 
+LOG_DEST: tent_250206_210215.txt
+LOG_TIME: 250206_210215
+MODEL:
+  ADAPTATION: tent
+  ARCH: Standard
+  EPISODIC: False
+OPTIM:
+  BETA: 0.9
+  DAMPENING: 0.0
+  LR: 0.001
+  METHOD: Adam
+  MOMENTUM: 0.9
+  NESTEROV: True
+  STEPS: 1
+  WD: 0.0
+RNG_SEED: 1
+SAVE_DIR: ./output
+TEST:
+  BATCH_SIZE: 200
+[25/02/06 21:02:16] [cifar10c.py:   32]: test-time adaptation: TENT
+[25/02/06 21:02:16] [cifar10c.py:   87]: model for adaptation: StandardNet(
+  (conv1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (block1): NetworkBlock(
+    (layer): Sequential(
+      (0): BasicBlock(
+        (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(16, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (convShortcut): Conv2d(16, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      )
+      (1): BasicBlock(
+        (bn1): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+      (2): BasicBlock(
+        (bn1): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+      (3): BasicBlock(
+        (bn1): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(160, 160, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+    )
+  )
+  (block2): NetworkBlock(
+    (layer): Sequential(
+      (0): BasicBlock(
+        (bn1): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(160, 320, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (convShortcut): Conv2d(160, 320, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+      (1): BasicBlock(
+        (bn1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+      (2): BasicBlock(
+        (bn1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+      (3): BasicBlock(
+        (bn1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(320, 320, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+    )
+  )
+  (block3): NetworkBlock(
+    (layer): Sequential(
+      (0): BasicBlock(
+        (bn1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(320, 640, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (convShortcut): Conv2d(320, 640, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+      (1): BasicBlock(
+        (bn1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+      (2): BasicBlock(
+        (bn1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+      (3): BasicBlock(
+        (bn1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu1): ReLU(inplace=True)
+        (conv1): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+        (relu2): ReLU(inplace=True)
+        (conv2): Conv2d(640, 640, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      )
+    )
+  )
+  (bn1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+  (relu): ReLU(inplace=True)
+  (fc): Linear(in_features=640, out_features=10, bias=True)
+)
+[25/02/06 21:02:16] [cifar10c.py:   88]: params for adaptation: ['block1.layer.0.bn1.weight', 'block1.layer.0.bn1.bias', 'block1.layer.0.bn2.weight', 'block1.layer.0.bn2.bias', 'block1.layer.1.bn1.weight', 'block1.layer.1.bn1.bias', 'block1.layer.1.bn2.weight', 'block1.layer.1.bn2.bias', 'block1.layer.2.bn1.weight', 'block1.layer.2.bn1.bias', 'block1.layer.2.bn2.weight', 'block1.layer.2.bn2.bias', 'block1.layer.3.bn1.weight', 'block1.layer.3.bn1.bias', 'block1.layer.3.bn2.weight', 'block1.layer.3.bn2.bias', 'block2.layer.0.bn1.weight', 'block2.layer.0.bn1.bias', 'block2.layer.0.bn2.weight', 'block2.layer.0.bn2.bias', 'block2.layer.1.bn1.weight', 'block2.layer.1.bn1.bias', 'block2.layer.1.bn2.weight', 'block2.layer.1.bn2.bias', 'block2.layer.2.bn1.weight', 'block2.layer.2.bn1.bias', 'block2.layer.2.bn2.weight', 'block2.layer.2.bn2.bias', 'block2.layer.3.bn1.weight', 'block2.layer.3.bn1.bias', 'block2.layer.3.bn2.weight', 'block2.layer.3.bn2.bias', 'block3.layer.0.bn1.weight', 'block3.layer.0.bn1.bias', 'block3.layer.0.bn2.weight', 'block3.layer.0.bn2.bias', 'block3.layer.1.bn1.weight', 'block3.layer.1.bn1.bias', 'block3.layer.1.bn2.weight', 'block3.layer.1.bn2.bias', 'block3.layer.2.bn1.weight', 'block3.layer.2.bn1.bias', 'block3.layer.2.bn2.weight', 'block3.layer.2.bn2.bias', 'block3.layer.3.bn1.weight', 'block3.layer.3.bn1.bias', 'block3.layer.3.bn2.weight', 'block3.layer.3.bn2.bias', 'bn1.weight', 'bn1.bias']
+[25/02/06 21:02:16] [cifar10c.py:   89]: optimizer for adaptation: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    eps: 1e-08
+    foreach: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0.0
+)
+[25/02/06 21:02:16] [cifar10c.py:   41]: resetting model
+[25/02/06 21:04:19] [cifar10c.py:   50]: error % [gaussian_noise5]: 24.82%
+[25/02/06 21:04:19] [cifar10c.py:   41]: resetting model
+[25/02/06 21:06:10] [cifar10c.py:   50]: error % [shot_noise5]: 23.49%
+[25/02/06 21:06:10] [cifar10c.py:   41]: resetting model
+[25/02/06 21:08:01] [cifar10c.py:   50]: error % [impulse_noise5]: 33.00%
+[25/02/06 21:08:01] [cifar10c.py:   41]: resetting model
+[25/02/06 21:09:52] [cifar10c.py:   50]: error % [defocus_blur5]: 11.92%
+[25/02/06 21:09:52] [cifar10c.py:   41]: resetting model
+[25/02/06 21:11:43] [cifar10c.py:   50]: error % [glass_blur5]: 31.85%
+[25/02/06 21:11:43] [cifar10c.py:   41]: resetting model
+[25/02/06 21:13:34] [cifar10c.py:   50]: error % [motion_blur5]: 13.71%
+[25/02/06 21:13:34] [cifar10c.py:   41]: resetting model
+[25/02/06 21:15:25] [cifar10c.py:   50]: error % [zoom_blur5]: 10.76%
+[25/02/06 21:15:25] [cifar10c.py:   41]: resetting model
+[25/02/06 21:17:16] [cifar10c.py:   50]: error % [snow5]: 15.92%
+[25/02/06 21:17:16] [cifar10c.py:   41]: resetting model
+[25/02/06 21:19:07] [cifar10c.py:   50]: error % [frost5]: 16.19%
+[25/02/06 21:19:07] [cifar10c.py:   41]: resetting model
+[25/02/06 21:20:58] [cifar10c.py:   50]: error % [fog5]: 13.67%
+[25/02/06 21:20:58] [cifar10c.py:   41]: resetting model
+[25/02/06 21:22:49] [cifar10c.py:   50]: error % [brightness5]: 7.86%
+[25/02/06 21:22:49] [cifar10c.py:   41]: resetting model
+[25/02/06 21:24:40] [cifar10c.py:   50]: error % [contrast5]: 12.04%
+[25/02/06 21:24:40] [cifar10c.py:   41]: resetting model
+[25/02/06 21:26:31] [cifar10c.py:   50]: error % [elastic_transform5]: 21.98%
+[25/02/06 21:26:31] [cifar10c.py:   41]: resetting model
+[25/02/06 21:28:22] [cifar10c.py:   50]: error % [pixelate5]: 17.29%
+[25/02/06 21:28:22] [cifar10c.py:   41]: resetting model
+[25/02/06 21:30:13] [cifar10c.py:   50]: error % [jpeg_compression5]: 24.18%
+[25/02/06 21:30:13] [cifar10c.py:   41]: resetting model
+[25/02/06 21:32:04] [cifar10c.py:   50]: error % [gaussian_noise4]: 22.22%
+[25/02/06 21:32:04] [cifar10c.py:   41]: resetting model
+[25/02/06 21:33:55] [cifar10c.py:   50]: error % [shot_noise4]: 18.38%
+[25/02/06 21:33:55] [cifar10c.py:   41]: resetting model
+[25/02/06 21:35:47] [cifar10c.py:   50]: error % [impulse_noise4]: 26.05%
+[25/02/06 21:35:47] [cifar10c.py:   41]: resetting model
+[25/02/06 21:37:38] [cifar10c.py:   50]: error % [defocus_blur4]: 8.30%
+[25/02/06 21:37:38] [cifar10c.py:   41]: resetting model
+[25/02/06 21:39:29] [cifar10c.py:   50]: error % [glass_blur4]: 31.46%
+[25/02/06 21:39:29] [cifar10c.py:   41]: resetting model
+[25/02/06 21:41:20] [cifar10c.py:   50]: error % [motion_blur4]: 11.33%
+[25/02/06 21:41:20] [cifar10c.py:   41]: resetting model
+[25/02/06 21:43:11] [cifar10c.py:   50]: error % [zoom_blur4]: 9.20%
+[25/02/06 21:43:11] [cifar10c.py:   41]: resetting model
+[25/02/06 21:45:02] [cifar10c.py:   50]: error % [snow4]: 15.35%
+[25/02/06 21:45:02] [cifar10c.py:   41]: resetting model
+[25/02/06 21:46:53] [cifar10c.py:   50]: error % [frost4]: 13.49%
+[25/02/06 21:46:53] [cifar10c.py:   41]: resetting model
+[25/02/06 21:48:44] [cifar10c.py:   50]: error % [fog4]: 8.51%
+[25/02/06 21:48:44] [cifar10c.py:   41]: resetting model
+[25/02/06 21:50:35] [cifar10c.py:   50]: error % [brightness4]: 6.92%
+[25/02/06 21:50:35] [cifar10c.py:   41]: resetting model
+[25/02/06 21:52:26] [cifar10c.py:   50]: error % [contrast4]: 8.07%
+[25/02/06 21:52:26] [cifar10c.py:   41]: resetting model
+[25/02/06 21:54:17] [cifar10c.py:   50]: error % [elastic_transform4]: 14.75%
+[25/02/06 21:54:17] [cifar10c.py:   41]: resetting model
+[25/02/06 21:56:08] [cifar10c.py:   50]: error % [pixelate4]: 12.40%
+[25/02/06 21:56:08] [cifar10c.py:   41]: resetting model
+[25/02/06 21:57:59] [cifar10c.py:   50]: error % [jpeg_compression4]: 21.66%
+[25/02/06 21:57:59] [cifar10c.py:   41]: resetting model
+[25/02/06 21:59:50] [cifar10c.py:   50]: error % [gaussian_noise3]: 19.85%
+[25/02/06 21:59:50] [cifar10c.py:   41]: resetting model
+[25/02/06 22:01:41] [cifar10c.py:   50]: error % [shot_noise3]: 17.21%
+[25/02/06 22:01:41] [cifar10c.py:   41]: resetting model
+[25/02/06 22:03:32] [cifar10c.py:   50]: error % [impulse_noise3]: 18.59%
+[25/02/06 22:03:32] [cifar10c.py:   41]: resetting model
+[25/02/06 22:05:23] [cifar10c.py:   50]: error % [defocus_blur3]: 6.54%
+[25/02/06 22:05:23] [cifar10c.py:   41]: resetting model
+[25/02/06 22:07:14] [cifar10c.py:   50]: error % [glass_blur3]: 21.46%
+[25/02/06 22:07:14] [cifar10c.py:   41]: resetting model
+[25/02/06 22:09:05] [cifar10c.py:   50]: error % [motion_blur3]: 11.05%
+[25/02/06 22:09:05] [cifar10c.py:   41]: resetting model
+[25/02/06 22:10:56] [cifar10c.py:   50]: error % [zoom_blur3]: 8.03%
+[25/02/06 22:10:56] [cifar10c.py:   41]: resetting model
+[25/02/06 22:12:47] [cifar10c.py:   50]: error % [snow3]: 12.78%
+[25/02/06 22:12:47] [cifar10c.py:   41]: resetting model
+[25/02/06 22:14:38] [cifar10c.py:   50]: error % [frost3]: 13.30%
+[25/02/06 22:14:38] [cifar10c.py:   41]: resetting model
+[25/02/06 22:16:30] [cifar10c.py:   50]: error % [fog3]: 6.82%
+[25/02/06 22:16:30] [cifar10c.py:   41]: resetting model
+[25/02/06 22:18:21] [cifar10c.py:   50]: error % [brightness3]: 6.77%
+[25/02/06 22:18:21] [cifar10c.py:   41]: resetting model
+[25/02/06 22:20:12] [cifar10c.py:   50]: error % [contrast3]: 6.92%
+[25/02/06 22:20:12] [cifar10c.py:   41]: resetting model
+[25/02/06 22:22:03] [cifar10c.py:   50]: error % [elastic_transform3]: 9.42%
+[25/02/06 22:22:03] [cifar10c.py:   41]: resetting model
+[25/02/06 22:23:54] [cifar10c.py:   50]: error % [pixelate3]: 9.34%
+[25/02/06 22:23:54] [cifar10c.py:   41]: resetting model
+[25/02/06 22:25:45] [cifar10c.py:   50]: error % [jpeg_compression3]: 18.62%
+[25/02/06 22:25:45] [cifar10c.py:   41]: resetting model
+[25/02/06 22:27:36] [cifar10c.py:   50]: error % [gaussian_noise2]: 14.94%
+[25/02/06 22:27:36] [cifar10c.py:   41]: resetting model
+[25/02/06 22:29:27] [cifar10c.py:   50]: error % [shot_noise2]: 11.00%
+[25/02/06 22:29:27] [cifar10c.py:   41]: resetting model
+[25/02/06 22:31:18] [cifar10c.py:   50]: error % [impulse_noise2]: 15.02%
+[25/02/06 22:31:18] [cifar10c.py:   41]: resetting model
+[25/02/06 22:33:09] [cifar10c.py:   50]: error % [defocus_blur2]: 6.19%
+[25/02/06 22:33:09] [cifar10c.py:   41]: resetting model
+[25/02/06 22:35:00] [cifar10c.py:   50]: error % [glass_blur2]: 21.83%
+[25/02/06 22:35:00] [cifar10c.py:   41]: resetting model
+[25/02/06 22:36:51] [cifar10c.py:   50]: error % [motion_blur2]: 9.52%
+[25/02/06 22:36:51] [cifar10c.py:   41]: resetting model
+[25/02/06 22:38:42] [cifar10c.py:   50]: error % [zoom_blur2]: 7.23%
+[25/02/06 22:38:42] [cifar10c.py:   41]: resetting model
+[25/02/06 22:40:33] [cifar10c.py:   50]: error % [snow2]: 12.74%
+[25/02/06 22:40:33] [cifar10c.py:   41]: resetting model
+[25/02/06 22:42:24] [cifar10c.py:   50]: error % [frost2]: 10.68%
+[25/02/06 22:42:24] [cifar10c.py:   41]: resetting model
+[25/02/06 22:44:15] [cifar10c.py:   50]: error % [fog2]: 6.43%
+[25/02/06 22:44:15] [cifar10c.py:   41]: resetting model
+[25/02/06 22:46:06] [cifar10c.py:   50]: error % [brightness2]: 6.67%
+[25/02/06 22:46:06] [cifar10c.py:   41]: resetting model
+[25/02/06 22:47:57] [cifar10c.py:   50]: error % [contrast2]: 6.58%
+[25/02/06 22:47:57] [cifar10c.py:   41]: resetting model
+[25/02/06 22:49:48] [cifar10c.py:   50]: error % [elastic_transform2]: 8.38%
+[25/02/06 22:49:48] [cifar10c.py:   41]: resetting model
+[25/02/06 22:51:39] [cifar10c.py:   50]: error % [pixelate2]: 8.56%
+[25/02/06 22:51:39] [cifar10c.py:   41]: resetting model
+[25/02/06 22:53:30] [cifar10c.py:   50]: error % [jpeg_compression2]: 17.39%
+[25/02/06 22:53:30] [cifar10c.py:   41]: resetting model
+[25/02/06 22:55:21] [cifar10c.py:   50]: error % [gaussian_noise1]: 10.89%
+[25/02/06 22:55:21] [cifar10c.py:   41]: resetting model
+[25/02/06 22:57:12] [cifar10c.py:   50]: error % [shot_noise1]: 9.32%
+[25/02/06 22:57:12] [cifar10c.py:   41]: resetting model
+[25/02/06 22:59:03] [cifar10c.py:   50]: error % [impulse_noise1]: 10.41%
+[25/02/06 22:59:03] [cifar10c.py:   41]: resetting model
+[25/02/06 23:00:55] [cifar10c.py:   50]: error % [defocus_blur1]: 6.01%
+[25/02/06 23:00:55] [cifar10c.py:   41]: resetting model
+[25/02/06 23:02:46] [cifar10c.py:   50]: error % [glass_blur1]: 21.11%
+[25/02/06 23:02:46] [cifar10c.py:   41]: resetting model
+[25/02/06 23:04:37] [cifar10c.py:   50]: error % [motion_blur1]: 7.59%
+[25/02/06 23:04:37] [cifar10c.py:   41]: resetting model
+[25/02/06 23:06:28] [cifar10c.py:   50]: error % [zoom_blur1]: 7.45%
+[25/02/06 23:06:28] [cifar10c.py:   41]: resetting model
+[25/02/06 23:08:19] [cifar10c.py:   50]: error % [snow1]: 8.63%
+[25/02/06 23:08:19] [cifar10c.py:   41]: resetting model
+[25/02/06 23:10:10] [cifar10c.py:   50]: error % [frost1]: 8.02%
+[25/02/06 23:10:10] [cifar10c.py:   41]: resetting model
+[25/02/06 23:12:01] [cifar10c.py:   50]: error % [fog1]: 5.99%
+[25/02/06 23:12:01] [cifar10c.py:   41]: resetting model
+[25/02/06 23:13:52] [cifar10c.py:   50]: error % [brightness1]: 6.39%
+[25/02/06 23:13:52] [cifar10c.py:   41]: resetting model
+[25/02/06 23:15:43] [cifar10c.py:   50]: error % [contrast1]: 6.20%
+[25/02/06 23:15:43] [cifar10c.py:   41]: resetting model
+[25/02/06 23:17:34] [cifar10c.py:   50]: error % [elastic_transform1]: 8.66%
+[25/02/06 23:17:34] [cifar10c.py:   41]: resetting model
+[25/02/06 23:19:25] [cifar10c.py:   50]: error % [pixelate1]: 7.82%
+[25/02/06 23:19:25] [cifar10c.py:   41]: resetting model
+[25/02/06 23:21:16] [cifar10c.py:   50]: error % [jpeg_compression1]: 12.57%

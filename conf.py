@@ -125,6 +125,8 @@ _C.LOG_DEST = "log.txt"
 # Log datetime
 _C.LOG_TIME = ''
 
+
+
 # # Config destination (in SAVE_DIR)
 # _C.CFG_DEST = "cfg.yaml"
 
@@ -208,3 +210,36 @@ def load_cfg_fom_args(description="Config options."):
     logger.info(
         "PyTorch Version: torch={}, cuda={}, cudnn={}".format(*version))
     logger.info(cfg)
+
+
+#PROXY LOSS - PULKIT 
+_C.PROXY = CfgNode()
+
+#Simmilarity Parameters
+_C.PROXY.SIGMA = 1.0 # Gaussian width 
+_C.PROXY.DELTA = 2.0 # Distance scaling factor  
+_C.PROXY.VIEW = 0 # View index 
+_C.PROXY.DISABLE_MU = False # Disable μ normalization 
+_C.PROXY.TOPK = 5 # Number of top neighbors
+
+#Embedding and Proxy Dimensions
+_C.PROXY.EMBEDDING_SIZE = 512 # Embedding size 
+_C.PROXY.BG_EMBEDDING_SIZE = 512 # Background embedding size 
+_C.PROXY.NUM_PROXIES = 100 # Number of proxies 
+_C.PROXY.NUM_DIMS = 3 # Dimensionality of proxy planes 
+_C.PROXY.NUM_NEIGHBORS = 10 # Neighbors to consider for local approximations 
+
+#Similarity decay Exponents
+_C.PROXY.PROJECTED_POWER = 1.0 # Exponent for projected distance similarity 
+_C.PROXY.RESIDUE_POWER = 1.0 # Exponent for residue similarity 
+
+#Similarity Formulation Exponents
+_C.PROXY.USE_GAUSSIAN_SIM = False # Use Gaussian similarity  
+_C.PROXY.USE_PROJECTED = True # Include projected distance in similarity 
+_C.PROXY.USE_ADDITIVE = False # Use additive similarity 
+_C.PROXY.PROXY_NORM = True # Normalize proxies 
+
+#Additional Loss Control
+_C.PROXY.NUM_LOCAL = 5 # Number of local neighbors for proxy plane loss 
+_C.PROXY.NO_PROXY = False # Disable proxy loss entirely
+_C.PROXY.ONLY_PROXY = False # Use only the proxy loss 
