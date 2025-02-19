@@ -17,3 +17,4 @@ __pycache__/
 
 /notebooks/*wild.ipynb
 /experiments
+ckpt/cifar10/corruptions/Standard.pt
