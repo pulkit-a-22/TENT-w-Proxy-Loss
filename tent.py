@@ -2,6 +2,7 @@ from copy import deepcopy
 import torch
 import torch.nn as nn
 import torch.jit
+from loss_proxy import Momentum_Update
 
 ################################################################
 # Original TENT code (unchanged)                               
@@ -48,15 +49,21 @@ def softmax_entropy(x: torch.Tensor) -> torch.Tensor:
 
 
 @torch.enable_grad()  # ensure grads in possible no grad context for testing
-def forward_and_adapt(x, model, optimizer):
+def forward_and_adapt(x, model, optimizer, teacher):
     """Forward and adapt model on batch of data (original TENT).
 
     Measure entropy of the model prediction, take gradients, and update params.
     """
     # forward
     outputs = model(x)
+
+    if isinstance(outputs, tuple):
+        logits, _ = outputs
+    else:
+        logits = outputs
+
     # adapt using TENT's entropy
-    loss = softmax_entropy(outputs).mean(0)
+    loss = softmax_entropy(logits).mean(0)
     loss.backward()
     optimizer.step()
     optimizer.zero_grad()
@@ -68,7 +75,7 @@ def forward_and_adapt(x, model, optimizer):
 ################################################################
 
 @torch.enable_grad()
-def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, proxy_loss_fn, epoch: int) -> torch.Tensor:
+def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum_updater, proxy_loss_fn, epoch: int) -> torch.Tensor:
     """
     Forward pass using student & teacher models and adapt the student model
     using the proxy loss (instead of TENT's entropy).
@@ -87,17 +94,28 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, proxy_lo
     # Student forward.
     student_out = student_model(x)
 
+    if isinstance(student_out, tuple):
+        student_logits, student_features = student_out
+    else:
+        print("Not getting student tuple out of resnet")
+        
     # Teacher forward (no grad).
     with torch.no_grad():
         teacher_out = teacher_model(x)
+        if isinstance(teacher_out, tuple):
+            teacher_logits, teacher_features = teacher_out
+        else:
+            print("Not getting teacher tuple out of resnet")
 
     # Compute the proxy loss (note: idx and y are no longer used).
-    loss_dict = proxy_loss_fn(student_out, teacher_out, epoch)
+    loss_dict = proxy_loss_fn(student_features, teacher_features, epoch)
     loss = loss_dict['loss']
 
     # Backpropagation & update.
     loss.backward()
     optimizer.step()
+    momentum_updater(student_model, teacher_model)
+
     optimizer.zero_grad()
 
     return student_out
@@ -113,13 +131,14 @@ class TentProxy(nn.Module):
     to update only BN parameters (and optionally proxy parameters).
     """
 
-    def __init__(self, student_model, teacher_model, proxy_loss_fn, optimizer,
+    def __init__(self, student_model, teacher_model, proxy_loss_fn, optimizer, momentum_updater,
                  steps=1, episodic=False, epoch=0):
         super().__init__()
         self.student_model = student_model
         self.teacher_model = teacher_model
         self.proxy_loss_fn = proxy_loss_fn
         self.optimizer = optimizer
+        self.momentum_updater = momentum_updater
         self.steps = steps
         assert steps > 0, "TentProxy requires >= 1 step(s)"
         self.episodic = episodic
@@ -139,6 +158,7 @@ class TentProxy(nn.Module):
                 student_model=self.student_model,
                 teacher_model=self.teacher_model,
                 optimizer=self.optimizer,
+                momentum_updater = self.momentum_updater,
                 proxy_loss_fn=self.proxy_loss_fn,
                 epoch=self.epoch
             )

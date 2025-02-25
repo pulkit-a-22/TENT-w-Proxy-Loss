@@ -1,6 +1,6 @@
 MODEL:
   ADAPTATION: tent_proxy
-  ARCH: bn_inception
+  ARCH: Resnet18
 
 TEST:
   BATCH_SIZE: 200

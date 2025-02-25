@@ -16,6 +16,8 @@ import norm
 
 from conf import cfg, load_cfg_fom_args
 
+from loss_proxy import Momentum_Update
+
 logger = logging.getLogger(__name__)
 
 def evaluate(description):
@@ -64,8 +66,8 @@ def evaluate(description):
     elif cfg.MODEL.ADAPTATION == "tent_proxy":
         logger.info("test-time adaptation: TENT-PROXY")
         # Use bn_inception from your proxy repository
-        from proxy_net.bn_inception import bn_inception
-        base_model = bn_inception(
+        from proxy_net.resnet import Resnet18
+        base_model = Resnet18(
             embedding_size=512,
             bg_embedding_size=1024,
             pretrained=True,   # or False, per your preference
@@ -95,7 +97,7 @@ def evaluate(description):
                 [corruption_type]
             )
             x_test, y_test = x_test.cuda(), y_test.cuda()
-            acc = accuracy(model, x_test, y_test, cfg.TEST.BATCH_SIZE)
+            acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x), x_test, y_test, cfg.TEST.BATCH_SIZE)
             err = 1. - acc
             logger.info(f"error % [{corruption_type}{severity}]: {err:.2%}")
 
@@ -153,7 +155,12 @@ def setup_tent_proxy(model):
     params, param_names = tent.collect_params(model)
 
     # 3) Create an optimizer.
+    #student
     optimizer = setup_optimizer(params)
+
+    #teacher
+    #Question - what should momentum updated be?
+    momentum_updater = Momentum_Update(0.999)
 
     # 4) Build a teacher model as a deep copy.
     teacher_model = copy.deepcopy(model)
@@ -163,8 +170,8 @@ def setup_tent_proxy(model):
     # 5) Build your proxy loss function.
     dummy_args = type('dummy_args', (), {
         'embedding_size': 512,
-        'bg_embedding_size': 1024,
-        'num_proxies': 100,
+        'bg_embedding_size': 512,
+        'num_proxies': 10,
         'num_dims': 3,
         'num_neighbors': 10,
         'projected_power': 1.0,
@@ -192,6 +199,7 @@ def setup_tent_proxy(model):
         teacher_model=teacher_model,
         proxy_loss_fn=proxy_loss_fn,
         optimizer=optimizer,
+        momentum_updater = momentum_updater,
         steps=cfg.OPTIM.STEPS,
         episodic=cfg.MODEL.EPISODIC,
         epoch=0
@@ -209,7 +217,7 @@ def setup_optimizer(params):
             lr=cfg.OPTIM.LR,
             betas=(cfg.OPTIM.BETA, 0.999),
             weight_decay=cfg.OPTIM.WD
-        )
+        ) 
     elif cfg.OPTIM.METHOD == 'SGD':
         return optim.SGD(
             params,
@@ -221,6 +229,7 @@ def setup_optimizer(params):
         )
     else:
         raise NotImplementedError
+    
 
 if __name__ == '__main__':
     evaluate('"CIFAR-10-C evaluation."')

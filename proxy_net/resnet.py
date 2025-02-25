@@ -74,18 +74,29 @@ class Resnet18(nn.Module):
         max_x = self.model.gmp(x)
         x = max_x + avg_x
         feat = x.view(x.size(0), -1)
-        
-        if self.is_student:
-            x_f = self.model.embedding_f(feat)
-            if self.is_norm:
-                x_f = l2_norm(x_f)
+
+        #Question - do we need to still check for student and return accordingly 
+        # if self.is_student:
+        #     x_f = self.model.embedding_f(feat)
+        #     if self.is_norm:
+        #         x_f = l2_norm(x_f)
             
-        x_g = self.model.embedding_g(feat)
+        # x_g = self.model.embedding_g(feat)
         
-        if self.is_student:
-            return x_g, x_f
-        else:
-            return x_g
+        # if self.is_student:
+        #     return x_g, x_f
+        # else:
+        #     return x_g
+
+        # Final classification output (for accuracy)
+        logits = self.model.embedding_g(feat)
+        # Second-to-last layer (features for proxy loss)
+        features = None
+        if hasattr(self.model, 'embedding_f'):
+            features = self.model.embedding_f(feat)
+            if self.is_norm:
+                features = l2_norm(features)
+        return logits, features
                 
 class Resnet34(nn.Module):
     def __init__(self, embedding_size, bg_embedding_size = 512, pretrained = True, is_norm=True, is_student = True, bn_freeze = True):
