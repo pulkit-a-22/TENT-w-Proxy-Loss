@@ -27,7 +27,6 @@ def l2_norm(input):
 class Resnet18(nn.Module):
     def __init__(self, embedding_size, bg_embedding_size = 512, pretrained = True, is_norm=True, is_student = True, bn_freeze = True):
         super(Resnet18, self).__init__()
-
         self.model = resnet18(pretrained)
         self.is_norm = is_norm
         self.is_student = is_student
@@ -38,13 +37,26 @@ class Resnet18(nn.Module):
         self.model.gmp = nn.AdaptiveMaxPool2d(1)
 
         self.model.embedding_g = nn.Linear(self.num_ftrs, self.bg_embedding_size)
-        nn.init.orthogonal_(self.model.embedding_g.weight)
-        nn.init.constant_(self.model.embedding_g.bias, 0)
+        self.classifier = nn.Linear(self.bg_embedding_size, 10)
+        nn.init.orthogonal_(self.classifier.weight)
+        nn.init.constant_(self.classifier.bias, 0)
+
+        #added classifier and changed these
+        # nn.init.orthogonal_(self.model.embedding_g.weight)
+        # nn.init.constant_(self.model.embedding_g.bias, 0)
         
         if is_student:
-            self.model.embedding_f = nn.Linear(self.num_ftrs, self.embedding_size)
-            nn.init.orthogonal_(self.model.embedding_f.weight)
-            nn.init.constant_(self.model.embedding_f.bias, 0)
+            self.embedding_f = nn.Linear(self.num_ftrs, self.embedding_size)
+            nn.init.orthogonal_(self.embedding_f.weight)
+            nn.init.constant_(self.embedding_f.bias, 0)
+
+            # import pdb; pdb.set_trace()  # <-- Breakpoint here for debugging
+            # print("DEBUG: Set embedding_f with shape", self.embedding_f.weight.shape)   
+
+            #Old code
+            # self.classifier = nn.Linear(self.bg_embedding_size, 10)
+            # nn.init.orthogonal_(self.classifier.weight)
+            # nn.init.constant_(self.classifier.bias, 0)
 
         if bn_freeze:
             for m in self.model.modules():
@@ -75,27 +87,18 @@ class Resnet18(nn.Module):
         x = max_x + avg_x
         feat = x.view(x.size(0), -1)
 
-        #Question - do we need to still check for student and return accordingly 
-        # if self.is_student:
-        #     x_f = self.model.embedding_f(feat)
-        #     if self.is_norm:
-        #         x_f = l2_norm(x_f)
-            
-        # x_g = self.model.embedding_g(feat)
-        
-        # if self.is_student:
-        #     return x_g, x_f
-        # else:
-        #     return x_g
-
         # Final classification output (for accuracy)
-        logits = self.model.embedding_g(feat)
+        intermediate = self.model.embedding_g(feat)
+        logits = self.classifier(intermediate)
+
         # Second-to-last layer (features for proxy loss)
         features = None
-        if hasattr(self.model, 'embedding_f'):
-            features = self.model.embedding_f(feat)
+        #if hasattr(self.model, 'embedding_f'):
+        if self.is_student:
+            features = self.embedding_f(feat)
             if self.is_norm:
                 features = l2_norm(features)
+
         return logits, features
                 
 class Resnet34(nn.Module):

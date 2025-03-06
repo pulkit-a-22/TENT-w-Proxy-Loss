@@ -91,6 +91,8 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
     Returns:
       Tensor: the student model's output embedding for the batch.
     """
+
+
     # Student forward.
     student_out = student_model(x)
 
@@ -98,7 +100,8 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
         student_logits, student_features = student_out
     else:
         print("Not getting student tuple out of resnet")
-        
+    
+
     # Teacher forward (no grad).
     with torch.no_grad():
         teacher_out = teacher_model(x)
@@ -107,18 +110,25 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
         else:
             print("Not getting teacher tuple out of resnet")
 
+
+
     # Compute the proxy loss (note: idx and y are no longer used).
     loss_dict = proxy_loss_fn(student_features, teacher_features, epoch)
     loss = loss_dict['loss']
 
+
     # Backpropagation & update.
+    optimizer.zero_grad()
     loss.backward()
+
+    
     optimizer.step()
     momentum_updater(student_model, teacher_model)
-
     optimizer.zero_grad()
 
-    return student_out
+
+    loss_value = loss.item()
+    return student_out, loss_value
 
 
 class TentProxy(nn.Module):
@@ -143,17 +153,21 @@ class TentProxy(nn.Module):
         assert steps > 0, "TentProxy requires >= 1 step(s)"
         self.episodic = episodic
         self.epoch = epoch  # epoch-like variable if needed by proxy_loss_fn
+        self.loss_history = []
 
         # Copy initial states so we can reset if episodic is True.
         self.model_state, self.optimizer_state = \
             copy_model_and_optimizer(self.student_model, self.optimizer)
+        
+        #teacher intial state 
+        self.teacher_state = deepcopy(self.teacher_model.state_dict())
 
     def forward(self, x) -> torch.Tensor:
         if self.episodic:
             self.reset()
 
         for _ in range(self.steps):
-            outputs = forward_and_adapt_proxy(
+            outputs, loss_value = forward_and_adapt_proxy(
                 x=x,
                 student_model=self.student_model,
                 teacher_model=self.teacher_model,
@@ -162,6 +176,7 @@ class TentProxy(nn.Module):
                 proxy_loss_fn=self.proxy_loss_fn,
                 epoch=self.epoch
             )
+            self.loss_history.append(loss_value)
         return outputs
 
     def reset(self):
@@ -169,6 +184,9 @@ class TentProxy(nn.Module):
             raise Exception("cannot reset without saved model/optimizer state")
         load_model_and_optimizer(self.student_model, self.optimizer,
                                  self.model_state, self.optimizer_state)
+
+        # Reset the teacher model to its initial state
+        self.teacher_model.load_state_dict(self.teacher_state)
 
 
 ################################################################
