@@ -175,6 +175,8 @@ class neighbor_proj_loss(nn.Module):
 
     def proxy_loss(self, s_emb, t_emb, point_planes_teacher,proxies_f , proxies_g, proxy_planes_g, proxy_planes_f, epoch):
         # 3 components proxy plane <--> point, point plane <--> proxy, proxy plane <--> point plane
+
+
         if self.disable_mu:
             s_emb = F.normalize(s_emb)
             # s_g = F.normalize(s_g)
@@ -185,24 +187,27 @@ class neighbor_proj_loss(nn.Module):
         else:
             proxies_normalized_f = proxies_f
             proxies_normalized_g = proxies_g
+        
+
 
         N = len(s_emb)
         S_dist_f = torch.cdist(proxies_normalized_f, s_emb)
-        #S_dist_g = torch.cdist(proxies_normalized_g, s_g)
-        #S_dist = torch.cdist(proxies_normalized, s_emb)
-        #point_planes = self.get_planes(s_emb)
+
         # 1) proxy plane <--> point
         fractional_similarity, residues = self.get_proxy_point_proj_similarity(t_emb, proxies_normalized_f, proxy_planes_f, epoch)
+
         # 2) point plane <--> proxy
         transpose_similarity, transpose_residues =  self.get_point_proxy_transpose_sim(s_emb, point_planes_teacher, proxies_normalized_f, epoch)
-        #fractional_similarity = (fractional_similarity )#+ transpose_similarity.T)/2
        
         normalized_residues = residues / 1.42
         normalized_transpose_residues = transpose_residues / 1.42
+
         with torch.no_grad():
+
             # need  num_proxy * batch_size sim mat here, based on proxy planes
             projected_dist = self.get_projected_dist_batch( ( t_emb.repeat(proxies_normalized_f.shape[0],1) - proxies_normalized_f.repeat_interleave(t_emb.shape[0], dim = 0)).reshape(proxies_normalized_f.shape[0], t_emb.shape[0],-1), proxy_planes_f ).reshape(proxies_normalized_f.shape[0],t_emb.shape[0]) #point_planes.repeat_interleave(t_emb.shape[0], dim = 0)
             projected_dist = projected_dist.clone().detach()
+            
             # need  batch_size * num_proxy sim mat here, based on point planes
             transpose_projected_dist = self.get_projected_dist_batch( ( proxies_normalized_f.repeat(t_emb.shape[0],1) - t_emb.repeat_interleave(proxies_normalized_f.shape[0], dim = 0)).reshape(t_emb.shape[0],proxies_normalized_f.shape[0],-1), point_planes_teacher ).reshape(t_emb.shape[0] ,proxies_normalized_f.shape[0]) #point_planes.repeat_interleave(t_emb.shape[0], dim = 0)
             transpose_projected_dist = transpose_projected_dist.clone().detach()
@@ -213,6 +218,8 @@ class neighbor_proj_loss(nn.Module):
         
         residue_similarity = 1/ torch.pow(1+ normalized_residues,self.args.residue_power )
         transpose_residue_similarity = 1/ torch.pow(1+ normalized_transpose_residues,self.args.residue_power )
+
+
         
         if(self.args.use_gaussian_sim):
             similarity = torch.exp(-projected_dist.pow(2)*self.args.projected_power - normalized_residues.pow(2)*self.args.residue_power)
@@ -229,13 +236,16 @@ class neighbor_proj_loss(nn.Module):
                 transpose_similarity = transpose_residue_similarity * transpose_projected_similarity
             else:
                 transpose_similarity = transpose_residue_similarity
+
+
         similarity = similarity + transpose_similarity.T
 
         loss = self.get_mse_loss_proxy(S_dist_f, similarity)
+
         # 3) proxy plane <--> point plane
         proxy_plane_loss = self.get_proxy_plane_loss( similarity, point_planes_teacher, proxy_planes_f, epoch)
 
-        return loss+ proxy_plane_loss 
+        return loss + proxy_plane_loss 
 
 
     def get_dist_sim(self, points1, points2):
@@ -366,22 +376,13 @@ class neighbor_proj_loss(nn.Module):
 
 
     def forward(self, s_f, t_f, epoch):
-        # main loss
-        # with torch.no_grad():
-        #     t1 = y.reshape(-1,self.args.num_neighbors)
-        #     m1,_ = torch.mode(t1, dim=1)
-        #     m5 = m1.unsqueeze(dim=1).repeat(1,self.args.num_neighbors)
-        #     num_rep = (t1 == m5).sum()
-        #     percent1 = num_rep / (t1.shape[0]* t1.shape[1])
-        #     total_loss = dict(RC=torch.tensor(0), proxy = torch.tensor(0), loss=torch.tensor(0.0, requires_grad=True))
-        #     print(percent1)
-        # breakpoint()
-        
+
+        if self.args.num_proxies == 0:
+            dummy_loss = torch.tensor(0.0, device=s_f.device, requires_grad=True)
+            return dict(RC=dummy_loss, proxy=dummy_loss, loss=dummy_loss)
         
         loss_RC_f, point_planes_teacher = self.get_point_neighbor_loss(s_f, t_f, epoch)
-        
-        # if(self.args.use_teacher):
-        # loss_RC_g,_ = self.get_point_neighbor_loss(s_g, t_g, epoch)
+
         loss_RC = (loss_RC_f)# + loss_RC_g)/2
         if(self.args.no_proxy):
             loss_proxy = torch.zeros_like(loss_RC)
@@ -392,7 +393,7 @@ class neighbor_proj_loss(nn.Module):
         else:
             loss = loss_RC + loss_proxy #+ loss_proxy2#+ loss_KL
 
-       
+        
         loss = loss #+ 10*std_loss
         total_loss = dict(RC=loss_RC, proxy = loss_proxy, loss=loss)
         

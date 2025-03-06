@@ -18,10 +18,13 @@ from conf import cfg, load_cfg_fom_args
 
 from loss_proxy import Momentum_Update
 
+import matplotlib.pyplot as plt
+
 logger = logging.getLogger(__name__)
 
 def evaluate(description):
     load_cfg_fom_args(description)
+    val_acc_history = []  # List to record validation accuracy for each evaluation step
 
     ############################################################
     # 1) If "tent": use the original code (RobustBench model)  
@@ -65,7 +68,7 @@ def evaluate(description):
     ############################################################
     elif cfg.MODEL.ADAPTATION == "tent_proxy":
         logger.info("test-time adaptation: TENT-PROXY")
-        # Use bn_inception from your proxy repository
+        # Use Resent18 from  proxy repository
         from proxy_net.resnet import Resnet18
         base_model = Resnet18(
             embedding_size=512,
@@ -79,6 +82,9 @@ def evaluate(description):
 
     else:
         raise ValueError(f"Unknown adaptation method: {cfg.MODEL.ADAPTATION}")
+    
+
+
 
     # Evaluate on each severity & corruption type.
     for severity in cfg.CORRUPTION.SEVERITY:
@@ -98,9 +104,20 @@ def evaluate(description):
             )
             x_test, y_test = x_test.cuda(), y_test.cuda()
             acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x), x_test, y_test, cfg.TEST.BATCH_SIZE)
+            val_acc_history.append(acc)  # record this accuracy value
             err = 1. - acc
             logger.info(f"error % [{corruption_type}{severity}]: {err:.2%}")
+    
 
+    # Plot validation accuracy over evaluation steps.
+    plt.figure(figsize=(10, 5))
+    plt.plot(val_acc_history, marker='o', label='Validation Accuracy')
+    plt.xlabel('Evaluation Step')
+    plt.ylabel('Accuracy')
+    plt.title('Validation Accuracy over Evaluations')
+    plt.legend()
+    plt.savefig('val_accuracy.png')  # Optionally, save the figure
+    plt.show()
 
 ############################################################
 # Original "source" & "norm" & "tent" setup (unchanged)    
