@@ -28,6 +28,11 @@ class Resnet18(nn.Module):
     def __init__(self, embedding_size, bg_embedding_size = 512, pretrained = True, is_norm=True, is_student = True, bn_freeze = True):
         super(Resnet18, self).__init__()
         self.model = resnet18(pretrained)
+
+        # OVERRIDE the 7x7 conv + maxpool from the standard ResNet:
+        self.model.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
+        self.model.maxpool = nn.Identity()
+
         self.is_norm = is_norm
         self.is_student = is_student
         self.embedding_size = embedding_size
@@ -38,8 +43,8 @@ class Resnet18(nn.Module):
 
         self.model.embedding_g = nn.Linear(self.num_ftrs, self.bg_embedding_size)
         self.classifier = nn.Linear(self.bg_embedding_size, 10)
-        nn.init.orthogonal_(self.classifier.weight)
-        nn.init.constant_(self.classifier.bias, 0)
+        # nn.init.orthogonal_(self.classifier.weight)
+        # nn.init.constant_(self.classifier.bias, 0)
 
         #added classifier and changed these
         # nn.init.orthogonal_(self.model.embedding_g.weight)
@@ -47,8 +52,8 @@ class Resnet18(nn.Module):
         
         if is_student:
             self.embedding_f = nn.Linear(self.num_ftrs, self.embedding_size)
-            nn.init.orthogonal_(self.embedding_f.weight)
-            nn.init.constant_(self.embedding_f.bias, 0)
+            # nn.init.orthogonal_(self.embedding_f.weight)
+            # nn.init.constant_(self.embedding_f.bias, 0)
 
             # import pdb; pdb.set_trace()  # <-- Breakpoint here for debugging
             # print("DEBUG: Set embedding_f with shape", self.embedding_f.weight.shape)   

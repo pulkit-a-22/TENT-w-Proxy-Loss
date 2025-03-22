@@ -1,0 +1,10 @@
+DEBUG: Using optimizer with lr = 0.0002
+Files already downloaded and verified
+DEBUG: CIFAR10 dataset loaded, length = 10000
+DEBUG: Sample image shape: (3, 32, 32), label: 3
+DEBUG: Before truncation, x_test_tensor shape = torch.Size([10000, 3, 32, 32])
+DEBUG: Before truncation, y_test_tensor shape = torch.Size([10000])
+DEBUG: After truncation, x_test_tensor shape = torch.Size([10000, 3, 32, 32])
+DEBUG: After truncation, y_test_tensor shape = torch.Size([10000])
+Loss history: []
+No adaptation steps were performed (loss_history is empty).

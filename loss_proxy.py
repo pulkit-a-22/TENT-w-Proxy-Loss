@@ -43,6 +43,7 @@ class Momentum_Update(nn.Module):
                 v_t.copy_(v_s)
             else:
                 v_t.copy_(v_t * m + (1. - m) * v_s)
+        
 
         #cov_inv = torch.inverse(cov_inv)
 
@@ -174,13 +175,13 @@ class neighbor_proj_loss(nn.Module):
         return loss
 
     def proxy_loss(self, s_emb, t_emb, point_planes_teacher,proxies_f , proxies_g, proxy_planes_g, proxy_planes_f, epoch):
+        
         # 3 components proxy plane <--> point, point plane <--> proxy, proxy plane <--> point plane
-
-
         if self.disable_mu:
             s_emb = F.normalize(s_emb)
             # s_g = F.normalize(s_g)
         t_emb = F.normalize(t_emb)
+
         if(self.args.proxy_norm):
             proxies_normalized_f = F.normalize(proxies_f)
             proxies_normalized_g = F.normalize(proxies_g)

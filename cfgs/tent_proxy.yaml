@@ -8,31 +8,12 @@ TEST:
 CORRUPTION:
   DATASET: cifar10
   SEVERITY:
-    - 5
-    - 4
-    - 3
     - 2
-    - 1
   TYPE:
     - gaussian_noise
-    - shot_noise
-    - impulse_noise
-    - defocus_blur
-    - glass_blur
-    - motion_blur
-    - zoom_blur
-    - snow
-    - frost
-    - fog
-    - brightness
-    - contrast
-    - elastic_transform
-    - pixelate
-    - jpeg_compression
-
 OPTIM:
   METHOD: Adam
-  STEPS: 1
+  STEPS: 50
   BETA: 0.9
-  LR: 1e-3
+  LR: 2e-5
   WD: 0.0

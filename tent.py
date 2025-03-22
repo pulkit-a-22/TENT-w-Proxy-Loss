@@ -18,7 +18,7 @@ class Tent(nn.Module):
         self.model = model
         self.optimizer = optimizer
         self.steps = steps
-        assert steps > 0, "tent requires >= 1 step(s) to forward and update"
+        #assert steps > 0, "tent requires >= 1 step(s) to forward and update"
         self.episodic = episodic
 
         # note: if the model is never reset, like for continual adaptation,
@@ -49,7 +49,7 @@ def softmax_entropy(x: torch.Tensor) -> torch.Tensor:
 
 
 @torch.enable_grad()  # ensure grads in possible no grad context for testing
-def forward_and_adapt(x, model, optimizer, teacher):
+def forward_and_adapt(x, model, optimizer, teacher=None):
     """Forward and adapt model on batch of data (original TENT).
 
     Measure entropy of the model prediction, take gradients, and update params.
@@ -91,8 +91,6 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
     Returns:
       Tensor: the student model's output embedding for the batch.
     """
-
-
     # Student forward.
     student_out = student_model(x)
 
@@ -100,6 +98,7 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
         student_logits, student_features = student_out
     else:
         print("Not getting student tuple out of resnet")
+
     
 
     # Teacher forward (no grad).
@@ -116,14 +115,16 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
     loss_dict = proxy_loss_fn(student_features, teacher_features, epoch)
     loss = loss_dict['loss']
 
-
     # Backpropagation & update.
     optimizer.zero_grad()
+    
     loss.backward()
 
     
     optimizer.step()
+
     momentum_updater(student_model, teacher_model)
+
     optimizer.zero_grad()
 
 
@@ -150,7 +151,7 @@ class TentProxy(nn.Module):
         self.optimizer = optimizer
         self.momentum_updater = momentum_updater
         self.steps = steps
-        assert steps > 0, "TentProxy requires >= 1 step(s)"
+        #assert steps > 0, "TentProxy requires >= 1 step(s)"
         self.episodic = episodic
         self.epoch = epoch  # epoch-like variable if needed by proxy_loss_fn
         self.loss_history = []
@@ -163,6 +164,9 @@ class TentProxy(nn.Module):
         self.teacher_state = deepcopy(self.teacher_model.state_dict())
 
     def forward(self, x) -> torch.Tensor:
+
+        if self.steps == 0:
+            return self.student_model(x)
         if self.episodic:
             self.reset()
 

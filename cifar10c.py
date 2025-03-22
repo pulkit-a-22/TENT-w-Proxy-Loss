@@ -5,6 +5,7 @@ import torch.optim as optim
 
 # Original robustbench & TENT imports (unchanged)
 from robustbench.data import load_cifar10c
+from robustbench.data import load_cifar10
 from robustbench.model_zoo.enums import ThreatModel
 from robustbench.utils import load_model
 from robustbench.utils import clean_accuracy as accuracy
@@ -19,6 +20,9 @@ from conf import cfg, load_cfg_fom_args
 from loss_proxy import Momentum_Update
 
 import matplotlib.pyplot as plt
+
+from torchvision.datasets import CIFAR10
+from torchvision.transforms import ToTensor
 
 logger = logging.getLogger(__name__)
 
@@ -69,22 +73,24 @@ def evaluate(description):
     elif cfg.MODEL.ADAPTATION == "tent_proxy":
         logger.info("test-time adaptation: TENT-PROXY")
         # Use Resent18 from  proxy repository
+
         from proxy_net.resnet import Resnet18
         base_model = Resnet18(
             embedding_size=512,
             bg_embedding_size=1024,
-            pretrained=True,   # or False, per your preference
+            pretrained=False,   # or False, per your preference
             is_norm=True,
             is_student=True,
             bn_freeze=False
         ).cuda()
+
+        checkpoint = torch.load("cifar10_pretrained_resnet18.pth")
+        base_model.load_state_dict(checkpoint, strict=True)
+        
         model = setup_tent_proxy(base_model)
 
     else:
         raise ValueError(f"Unknown adaptation method: {cfg.MODEL.ADAPTATION}")
-    
-
-
 
     # Evaluate on each severity & corruption type.
     for severity in cfg.CORRUPTION.SEVERITY:
@@ -171,33 +177,20 @@ def setup_tent_proxy(model):
     # 2) Gather BN parameters.
     params, param_names = tent.collect_params(model)
 
-    # 3) Create an optimizer.
-    #student
-    optimizer = setup_optimizer(params)
-
-    #teacher
-    #Question - what should momentum updated be?
-    momentum_updater = Momentum_Update(0.999)
-
-    # 4) Build a teacher model as a deep copy.
-    teacher_model = copy.deepcopy(model)
-    teacher_model.eval()
-    teacher_model.requires_grad_(False)
-
-    # 5) Build your proxy loss function.
     dummy_args = type('dummy_args', (), {
         'embedding_size': 512,
-        'bg_embedding_size': 512,
+        'bg_embedding_size': 1024,
+        #stop using proxies 
         'num_proxies': 10,
         'num_dims': 3,
-        'num_neighbors': 10,
-        'projected_power': 1.0,
-        'residue_power': 1.0,
+        'num_neighbors': 20,
+        'projected_power': 0.0,
+        'residue_power': 3.0,
         'use_gaussian_sim': False,
         'use_projected': True,
         'use_additive': False,
         'proxy_norm': True,
-        'num_local': 5,
+        'num_local': 10,
         'no_proxy': False,
         'only_proxy': False
     })
@@ -209,6 +202,28 @@ def setup_tent_proxy(model):
         disable_mu=False,
         topk=5
     ).cuda()
+
+    #added
+    proxy_params = list(proxy_loss_fn.parameters())
+    proxy_param_names = [f"proxy_loss_fn.{n}" for n, p in proxy_loss_fn.named_parameters()]
+
+    all_params = params + proxy_params
+    all_param_names = param_names + proxy_param_names
+
+    # 3) Create an optimizer.
+    #student
+    #changed to all params
+    optimizer = setup_optimizer(all_params)
+
+    #teacher
+    #Question - what should momentum updated be?
+    momentum_updater = Momentum_Update(0.999)
+
+    # 4) Build a teacher model as a deep copy.
+    teacher_model = copy.deepcopy(model)
+    teacher_model.eval()
+    teacher_model.requires_grad_(False)
+
 
     # 6) Wrap everything in TentProxy.
     tent_proxy_model = tent.TentProxy(
