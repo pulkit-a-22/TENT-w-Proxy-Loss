@@ -1,0 +1,14 @@
+[25/04/04 19:03:29] [run_experiments.py:   23]: [run_experiments] Starting loops for dims=[3, 5], lr=[2e-05, 0.0001]
+[25/04/04 19:03:29] [run_experiments.py:   37]: === Running evaluate(...) with dims=3, lr=2e-05 ===
+[25/04/04 19:03:29] [cifar10c.py:   87]: test-time adaptation: TENT-PROXY
+[25/04/04 19:29:45] [cifar10c.py:  144]: Using 2e-05 learning rate and 3 dims error % [gaussian_noise5]: 30.09%
+[25/04/04 19:29:45] [run_experiments.py:   37]: === Running evaluate(...) with dims=3, lr=0.0001 ===
+[25/04/04 19:29:45] [cifar10c.py:   87]: test-time adaptation: TENT-PROXY
+[25/04/04 19:55:59] [cifar10c.py:  144]: Using 2e-05 learning rate and 3 dims error % [gaussian_noise5]: 30.09%
+[25/04/04 19:55:59] [run_experiments.py:   37]: === Running evaluate(...) with dims=5, lr=2e-05 ===
+[25/04/04 19:55:59] [cifar10c.py:   87]: test-time adaptation: TENT-PROXY
+[25/04/04 20:22:13] [cifar10c.py:  144]: Using 2e-05 learning rate and 5 dims error % [gaussian_noise5]: 30.09%
+[25/04/04 20:22:13] [run_experiments.py:   37]: === Running evaluate(...) with dims=5, lr=0.0001 ===
+[25/04/04 20:22:13] [cifar10c.py:   87]: test-time adaptation: TENT-PROXY
+[25/04/04 20:48:27] [cifar10c.py:  144]: Using 2e-05 learning rate and 5 dims error % [gaussian_noise5]: 30.09%
+[25/04/04 20:48:27] [run_experiments.py:   42]: [run_experiments] All experiments done.

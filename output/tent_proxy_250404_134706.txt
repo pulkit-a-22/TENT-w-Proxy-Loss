@@ -1,0 +1,2 @@
+[25/04/04 13:47:06] [cifar10c.py:   82]: test-time adaptation: TENT-PROXY
+[25/04/04 13:47:08] [cifar10c.py:  108]: resetting model

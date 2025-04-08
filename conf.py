@@ -187,6 +187,9 @@ def load_cfg_fom_args(description="Config options."):
     log_dest = log_dest.replace('.yaml', '_{}.txt'.format(current_time))
 
     g_pathmgr.mkdirs(cfg.SAVE_DIR)
+
+    cfg.defrost()
+
     cfg.LOG_TIME, cfg.LOG_DEST = current_time, log_dest
     cfg.freeze()
 
@@ -207,10 +210,6 @@ def load_cfg_fom_args(description="Config options."):
     logger = logging.getLogger(__name__)
     version = [torch.__version__, torch.version.cuda,
                torch.backends.cudnn.version()]
-    logger.info(
-        "PyTorch Version: torch={}, cuda={}, cudnn={}".format(*version))
-    logger.info(cfg)
-
 
 #PROXY LOSS - PULKIT 
 _C.PROXY = CfgNode()

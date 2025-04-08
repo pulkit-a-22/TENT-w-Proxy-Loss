@@ -1,0 +1,1524 @@
+[25/04/04 15:45:57] [cifar10c.py:   86]: test-time adaptation: TENT-PROXY
+/hdd/pulkita2/miniconda3/envs/myenv/lib/python3.9/site-packages/torchvision/models/_utils.py:135: UserWarning: Using 'weights' as positional parameter(s) is deprecated since 0.13 and will be removed in 0.15. Please use keyword parameter(s) instead.
+  warnings.warn(
+/hdd/pulkita2/miniconda3/envs/myenv/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/hdd/pulkita2/miniconda3/envs/myenv/lib/python3.9/site-packages/torch/nn/init.py:445: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+[DEBUG] Entering evaluate()
+[DEBUG] Loaded config in 0.004s
+[DEBUG] Model setup took 1.421s
+[DEBUG] Starting evaluation on gaussian_noise severity=5
+[DEBUG] model.reset() took 0.005s
+[DEBUG] Loading + sending data to GPU took 0.213s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 1.182s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.308s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.314s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.313s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.312s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.309s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.310s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] => Entering forward_and_adapt_proxy()
+[DEBUG] => neighbor_proj_loss.forward() called
+[DEBUG] forward_and_adapt_proxy() => loss=0.0000, took 0.311s
+[DEBUG] gaussian_noise5 => acc=69.91%, err=30.09%, took 1743799558.670s
+[DEBUG] Done gaussian_noise5 in 156.592s total.
+
+Traceback (most recent call last):
+  File "/hdd/pulkita2/tent/cifar10c.py", line 285, in <module>
+    evaluate('"CIFAR-10-C evaluation."')
+  File "/hdd/pulkita2/tent/cifar10c.py", line 141, in evaluate
+    logger.info(f"Using {cfg.LR} learning rate and {cfg.PROXY.NUM_DIMS} dims error % [{corruption_type}{severity}]: {err:.2%}")
+  File "/hdd/pulkita2/miniconda3/envs/myenv/lib/python3.9/site-packages/yacs/config.py", line 141, in __getattr__
+    raise AttributeError(name)
+AttributeError: LR

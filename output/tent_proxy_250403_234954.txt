@@ -1,0 +1,99 @@
+[25/04/03 23:49:54] [conf.py:  210]: PyTorch Version: torch=1.12.1+cu113, cuda=11.3, cudnn=8302
+[25/04/03 23:49:54] [conf.py:  212]: BN:
+  EPS: 1e-05
+  MOM: 0.1
+CKPT_DIR: ./ckpt
+CORRUPTION:
+  DATASET: cifar10
+  NUM_EX: 10000
+  SEVERITY: [5]
+  TYPE: ['gaussian_noise']
+CUDNN:
+  BENCHMARK: True
+DATA_DIR: ./data
+DESC: 
+LOG_DEST: tent_proxy_250403_234954.txt
+LOG_TIME: 250403_234954
+MODEL:
+  ADAPTATION: tent_proxy
+  ARCH: Resnet18
+  EPISODIC: False
+OPTIM:
+  BETA: 0.9
+  DAMPENING: 0.0
+  LR: 2e-05
+  METHOD: Adam
+  MOMENTUM: 0.9
+  NESTEROV: True
+  STEPS: 1
+  WD: 0.0
+PROXY:
+  BG_EMBEDDING_SIZE: 512
+  DELTA: 2.0
+  DISABLE_MU: False
+  EMBEDDING_SIZE: 512
+  NO_PROXY: False
+  NUM_DIMS: 3
+  NUM_LOCAL: 5
+  NUM_NEIGHBORS: 10
+  NUM_PROXIES: 100
+  ONLY_PROXY: False
+  PROJECTED_POWER: 1.0
+  PROXY_NORM: True
+  RESIDUE_POWER: 1.0
+  SIGMA: 1.0
+  TOPK: 5
+  USE_ADDITIVE: False
+  USE_GAUSSIAN_SIM: False
+  USE_PROJECTED: True
+  VIEW: 0
+RNG_SEED: 1
+SAVE_DIR: ./output
+TEST:
+  BATCH_SIZE: 200
+[25/04/03 23:49:54] [cifar10c.py:   55]: === Now testing with num_dims=1, steps=1 ===
+[25/04/03 23:49:56] [cifar10c.py:  106]: resetting model
+[25/04/03 23:52:34] [cifar10c.py:  156]: [dim=1, steps=1] Error % [gaussian_noise5]: 29.96%
+[25/04/03 23:52:34] [cifar10c.py:  164]: Avg time per mini-batch: 3.1737s
+[25/04/03 23:52:34] [cifar10c.py:  165]: Last mini-batch accuracy: 68.50%
+[25/04/03 23:52:34] [cifar10c.py:   55]: === Now testing with num_dims=1, steps=10 ===
+[25/04/03 23:52:35] [cifar10c.py:  106]: resetting model
+[25/04/04 00:18:16] [cifar10c.py:  156]: [dim=1, steps=10] Error % [gaussian_noise5]: 28.74%
+[25/04/04 00:18:16] [cifar10c.py:  164]: Avg time per mini-batch: 30.8217s
+[25/04/04 00:18:16] [cifar10c.py:  165]: Last mini-batch accuracy: 72.50%
+[25/04/04 00:18:16] [cifar10c.py:   55]: === Now testing with num_dims=1, steps=20 ===
+[25/04/04 00:18:16] [cifar10c.py:  106]: resetting model
+[25/04/04 01:09:44] [cifar10c.py:  156]: [dim=1, steps=20] Error % [gaussian_noise5]: 28.49%
+[25/04/04 01:09:44] [cifar10c.py:  164]: Avg time per mini-batch: 61.7587s
+[25/04/04 01:09:44] [cifar10c.py:  165]: Last mini-batch accuracy: 71.50%
+[25/04/04 01:09:44] [cifar10c.py:   55]: === Now testing with num_dims=10, steps=1 ===
+[25/04/04 01:09:45] [cifar10c.py:  106]: resetting model
+[25/04/04 01:12:00] [cifar10c.py:  156]: [dim=10, steps=1] Error % [gaussian_noise5]: 29.96%
+[25/04/04 01:12:00] [cifar10c.py:  164]: Avg time per mini-batch: 2.6984s
+[25/04/04 01:12:00] [cifar10c.py:  165]: Last mini-batch accuracy: 68.50%
+[25/04/04 01:12:00] [cifar10c.py:   55]: === Now testing with num_dims=10, steps=10 ===
+[25/04/04 01:12:00] [cifar10c.py:  106]: resetting model
+[25/04/04 01:34:31] [cifar10c.py:  156]: [dim=10, steps=10] Error % [gaussian_noise5]: 28.70%
+[25/04/04 01:34:31] [cifar10c.py:  164]: Avg time per mini-batch: 27.0163s
+[25/04/04 01:34:31] [cifar10c.py:  165]: Last mini-batch accuracy: 72.50%
+[25/04/04 01:34:31] [cifar10c.py:   55]: === Now testing with num_dims=10, steps=20 ===
+[25/04/04 01:34:31] [cifar10c.py:  106]: resetting model
+[25/04/04 02:19:32] [cifar10c.py:  156]: [dim=10, steps=20] Error % [gaussian_noise5]: 28.26%
+[25/04/04 02:19:32] [cifar10c.py:  164]: Avg time per mini-batch: 54.0069s
+[25/04/04 02:19:32] [cifar10c.py:  165]: Last mini-batch accuracy: 71.50%
+[25/04/04 02:19:32] [cifar10c.py:   55]: === Now testing with num_dims=20, steps=1 ===
+[25/04/04 02:19:32] [cifar10c.py:  106]: resetting model
+[25/04/04 02:20:23] [cifar10c.py:  156]: [dim=20, steps=1] Error % [gaussian_noise5]: 29.96%
+[25/04/04 02:20:23] [cifar10c.py:  164]: Avg time per mini-batch: 1.0215s
+[25/04/04 02:20:23] [cifar10c.py:  165]: Last mini-batch accuracy: 68.50%
+[25/04/04 02:20:23] [cifar10c.py:   55]: === Now testing with num_dims=20, steps=10 ===
+[25/04/04 02:20:24] [cifar10c.py:  106]: resetting model
+[25/04/04 02:28:55] [cifar10c.py:  156]: [dim=20, steps=10] Error % [gaussian_noise5]: 28.76%
+[25/04/04 02:28:55] [cifar10c.py:  164]: Avg time per mini-batch: 10.2157s
+[25/04/04 02:28:55] [cifar10c.py:  165]: Last mini-batch accuracy: 71.50%
+[25/04/04 02:28:55] [cifar10c.py:   55]: === Now testing with num_dims=20, steps=20 ===
+[25/04/04 02:28:55] [cifar10c.py:  106]: resetting model
+[25/04/04 02:45:56] [cifar10c.py:  156]: [dim=20, steps=20] Error % [gaussian_noise5]: 28.17%
+[25/04/04 02:45:56] [cifar10c.py:  164]: Avg time per mini-batch: 20.4171s
+[25/04/04 02:45:56] [cifar10c.py:  165]: Last mini-batch accuracy: 71.00%
+[25/04/04 02:45:56] [cifar10c.py:  168]: Done all dims and steps. All recorded final accuracies: [0.7004, 0.7126, 0.7151, 0.7004, 0.713, 0.7174, 0.7004, 0.7124, 0.7183]

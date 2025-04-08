@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.jit
 from loss_proxy import Momentum_Update
+import time
 
 ################################################################
 # Original TENT code (unchanged)                               
@@ -91,6 +92,9 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
     Returns:
       Tensor: the student model's output embedding for the batch.
     """
+    start_time = time.time()
+    #] => Entering forward_and_adapt_proxy()")
+
     # Student forward.
     student_out = student_model(x)
 
@@ -129,6 +133,11 @@ def forward_and_adapt_proxy(x, student_model, teacher_model, optimizer, momentum
 
 
     loss_value = loss.item()
+
+    elapsed = time.time() - start_time
+    #print(f"[DEBUG] forward_and_adapt_proxy() => loss={loss.item():.4f}, took {elapsed:.3f}s")
+
+
     return student_out, loss_value
 
 

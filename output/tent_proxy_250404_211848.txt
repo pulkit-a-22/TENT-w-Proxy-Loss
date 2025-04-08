@@ -1,0 +1,3 @@
+[25/04/04 21:18:48] [run_experiments.py:   23]: [run_experiments] Starting loops for dims=[3, 5], lr=[0.0001]
+[25/04/04 21:18:48] [run_experiments.py:   37]: === Running evaluate(...) with dims=3, lr=0.0001 ===
+[25/04/04 21:18:48] [cifar10c.py:   87]: test-time adaptation: TENT-PROXY

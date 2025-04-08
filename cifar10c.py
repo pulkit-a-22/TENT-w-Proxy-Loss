@@ -23,13 +23,26 @@ import matplotlib.pyplot as plt
 
 from torchvision.datasets import CIFAR10
 from torchvision.transforms import ToTensor
+import time
+from proxy_net.resnet import Resnet18
+from contextlib import redirect_stdout
 
 logger = logging.getLogger(__name__)
 
-def evaluate(description):
-    load_cfg_fom_args(description)
-    val_acc_history = []  # List to record validation accuracy for each evaluation step
+def my_custom_accuracy(logits: torch.Tensor, targets: torch.Tensor) -> float:
+    # Predicted class = argmax of logits
+    _, predicted = logits.max(dim=1)
+    correct = predicted.eq(targets).sum().item()
+    return correct / targets.size(0)
 
+def evaluate(description):
+    #print("[DEBUG] Entering evaluate()")
+    total_eval_start = time.time()
+
+    #load_cfg_fom_args(description)
+    #print(f"[DEBUG] Loaded config in {time.time() - total_eval_start:.3f}s")
+
+    setup_start = time.time()
     ############################################################
     # 1) If "tent": use the original code (RobustBench model)  
     ############################################################
@@ -91,16 +104,25 @@ def evaluate(description):
 
     else:
         raise ValueError(f"Unknown adaptation method: {cfg.MODEL.ADAPTATION}")
+    
+    #print(f"[DEBUG] Model setup took {time.time() - setup_start:.3f}s")
 
     # Evaluate on each severity & corruption type.
     for severity in cfg.CORRUPTION.SEVERITY:
         for corruption_type in cfg.CORRUPTION.TYPE:
+
+            loop_start = time.time()
+            #print(f"[DEBUG] Starting evaluation on {corruption_type} severity={severity}")
+
             try:
+                reset_start = time.time()
                 model.reset()
-                logger.info("resetting model")
+                print("resetting model")
+                #print(f"[DEBUG] model.reset() took {time.time() - reset_start:.3f}s")
             except Exception as e:
                 logger.warning("not resetting model: " + str(e))
-
+            
+            data_start = time.time()
             x_test, y_test = load_cifar10c(
                 cfg.CORRUPTION.NUM_EX,
                 severity,
@@ -109,21 +131,20 @@ def evaluate(description):
                 [corruption_type]
             )
             x_test, y_test = x_test.cuda(), y_test.cuda()
-            acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x), x_test, y_test, cfg.TEST.BATCH_SIZE)
-            val_acc_history.append(acc)  # record this accuracy value
-            err = 1. - acc
-            logger.info(f"error % [{corruption_type}{severity}]: {err:.2%}")
-    
+            #print(f"[DEBUG] Loading + sending data to GPU took {time.time() - data_start:.3f}s")
 
-    # Plot validation accuracy over evaluation steps.
-    plt.figure(figsize=(10, 5))
-    plt.plot(val_acc_history, marker='o', label='Validation Accuracy')
-    plt.xlabel('Evaluation Step')
-    plt.ylabel('Accuracy')
-    plt.title('Validation Accuracy over Evaluations')
-    plt.legend()
-    plt.savefig('val_accuracy.png')  # Optionally, save the figure
-    plt.show()
+            acc_start = time.time()
+            acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x), x_test, y_test, cfg.TEST.BATCH_SIZE)
+            acc_time = time.time() - acc_start
+            err = 1. - acc
+            #print(f"[DEBUG] {corruption_type}{severity} => acc={acc*100:.2f}%, err={err*100:.2f}%, took {acc_time:.3f}s")
+
+            loop_time = time.time() - loop_start
+            #print(f"[DEBUG] Done {corruption_type}{severity} in {loop_time:.3f}s total.\n")
+            logger.info(f"Using {cfg.OPTIM.LR} learning rate and {cfg.PROXY.NUM_DIMS} dims error % [{corruption_type}{severity}]: {err:.2%}")
+    
+    total_eval_time = time.time() - total_eval_start
+    #print(f"[DEBUG] evaluate() finished. Overall took {total_eval_time:.3f}s total.\n")
 
 ############################################################
 # Original "source" & "norm" & "tent" setup (unchanged)    
@@ -181,8 +202,8 @@ def setup_tent_proxy(model):
         'embedding_size': 512,
         'bg_embedding_size': 1024,
         #stop using proxies 
-        'num_proxies': 10,
-        'num_dims': 3,
+        'num_proxies': 0,
+        'num_dims': cfg.PROXY.NUM_DIMS,
         'num_neighbors': 20,
         'projected_power': 0.0,
         'residue_power': 3.0,
@@ -236,9 +257,9 @@ def setup_tent_proxy(model):
         episodic=cfg.MODEL.EPISODIC,
         epoch=0
     )
-    logger.info(f"model for adaptation (tent_proxy): {model}")
-    logger.info(f"params for adaptation: {param_names}")
-    logger.info(f"optimizer for adaptation: {optimizer}")
+    # logger.info(f"model for adaptation (tent_proxy): {model}")
+    # logger.info(f"params for adaptation: {param_names}")
+    # logger.info(f"optimizer for adaptation: {optimizer}")
     return tent_proxy_model
 
 def setup_optimizer(params):

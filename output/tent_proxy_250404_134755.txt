@@ -1,0 +1,2 @@
+[25/04/04 13:47:55] [run_experiments.py:   22]: [run_experiments] Starting loops for dims=[3, 5], lr=[2e-05, 0.0001]
+[25/04/04 13:47:55] [run_experiments.py:   36]: === Running evaluate(...) with dims=3, lr=2e-05 ===

@@ -7,6 +7,7 @@ import torch.nn.functional as F
 import math
 #from torch.distributions.multivariate_normal import MultivariateNormal
 from pdb import set_trace as breakpoint
+import time
 
 def l2_norm(input):
     input_size = input.size()
@@ -175,7 +176,7 @@ class neighbor_proj_loss(nn.Module):
         return loss
 
     def proxy_loss(self, s_emb, t_emb, point_planes_teacher,proxies_f , proxies_g, proxy_planes_g, proxy_planes_f, epoch):
-        
+        start = time.time()
         # 3 components proxy plane <--> point, point plane <--> proxy, proxy plane <--> point plane
         if self.disable_mu:
             s_emb = F.normalize(s_emb)
@@ -246,6 +247,7 @@ class neighbor_proj_loss(nn.Module):
         # 3) proxy plane <--> point plane
         proxy_plane_loss = self.get_proxy_plane_loss( similarity, point_planes_teacher, proxy_planes_f, epoch)
 
+        #print(f"[DEBUG] => proxy_loss() took {time.time() - start:.3f}s")
         return loss + proxy_plane_loss 
 
 
@@ -311,6 +313,7 @@ class neighbor_proj_loss(nn.Module):
         return fraction_similarity, point_planes, plane_centers, residues
 
     def get_point_neighbor_loss(self, s_emb, t_emb, epoch):
+        start = time.time()
         #if self.disable_mu:
         s_emb = F.normalize(s_emb)
         t_emb = F.normalize(t_emb)
@@ -362,6 +365,8 @@ class neighbor_proj_loss(nn.Module):
         #print(c1)
         #breakpoint()
         loss = self.get_mse_loss(S_dist,similarity)
+        #print(f"[DEBUG] get_point_neighbor_loss() => completed in {time.time()-start:.3f}s")
+        return something
         return loss, point_planes
 
     def get_mse_loss(self, S_dist,similarity):
@@ -378,17 +383,26 @@ class neighbor_proj_loss(nn.Module):
 
     def forward(self, s_f, t_f, epoch):
 
+        start_time = time.time()
+        #print("[DEBUG] => neighbor_proj_loss.forward() called")
+
         if self.args.num_proxies == 0:
             dummy_loss = torch.tensor(0.0, device=s_f.device, requires_grad=True)
             return dict(RC=dummy_loss, proxy=dummy_loss, loss=dummy_loss)
         
+        rc_start = time.time()
         loss_RC_f, point_planes_teacher = self.get_point_neighbor_loss(s_f, t_f, epoch)
+        #print(f"[DEBUG] get_point_neighbor_loss() took {time.time() - rc_start:.3f}s")
 
+        
+        proxy_start = time.time()
         loss_RC = (loss_RC_f)# + loss_RC_g)/2
         if(self.args.no_proxy):
             loss_proxy = torch.zeros_like(loss_RC)
         else:
             loss_proxy = self.proxy_loss(s_f,t_f,point_planes_teacher, self.proxies_f, self.proxies_g, self.proxy_planes_g,self.proxy_planes_f, epoch)
+        #] proxy_loss() took {time.time() - proxy_start:.3f}s")
+
         if(self.args.only_proxy == True):
             loss = loss_proxy #+ loss_proxy2
         else:
@@ -397,7 +411,7 @@ class neighbor_proj_loss(nn.Module):
         
         loss = loss #+ 10*std_loss
         total_loss = dict(RC=loss_RC, proxy = loss_proxy, loss=loss)
-        
+        #print(f"[DEBUG] => neighbor_proj_loss.forward() total took {time.time() - start_time:.3f}s")
         return total_loss
 
 
