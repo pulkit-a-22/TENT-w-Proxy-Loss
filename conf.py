@@ -223,14 +223,14 @@ _C.PROXY.TOPK = 5 # Number of top neighbors
 
 #Embedding and Proxy Dimensions
 _C.PROXY.EMBEDDING_SIZE = 512 # Embedding size 
-_C.PROXY.BG_EMBEDDING_SIZE = 512 # Background embedding size 
+_C.PROXY.BG_EMBEDDING_SIZE = 1024 # Background embedding size 
 _C.PROXY.NUM_PROXIES = 100 # Number of proxies 
 _C.PROXY.NUM_DIMS = 3 # Dimensionality of proxy planes 
 _C.PROXY.NUM_NEIGHBORS = 10 # Neighbors to consider for local approximations 
 
 #Similarity decay Exponents
 _C.PROXY.PROJECTED_POWER = 1.0 # Exponent for projected distance similarity 
-_C.PROXY.RESIDUE_POWER = 1.0 # Exponent for residue similarity 
+_C.PROXY.RESIDUE_POWER = 3.0 # Exponent for residue similarity  -- OR 4
 
 #Similarity Formulation Exponents
 _C.PROXY.USE_GAUSSIAN_SIM = False # Use Gaussian similarity  

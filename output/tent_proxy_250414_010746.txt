@@ -1,0 +1,2 @@
+[25/04/14 01:07:46] [cifar10c.py:   48]: test-time adaptation: TENT-PROXY
+[25/04/14 01:07:48] [cifar10c.py:   67]: Testing on gaussian_noise at severity 5

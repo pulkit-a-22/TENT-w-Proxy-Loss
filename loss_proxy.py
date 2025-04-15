@@ -366,7 +366,6 @@ class neighbor_proj_loss(nn.Module):
         #breakpoint()
         loss = self.get_mse_loss(S_dist,similarity)
         #print(f"[DEBUG] get_point_neighbor_loss() => completed in {time.time()-start:.3f}s")
-        return something
         return loss, point_planes
 
     def get_mse_loss(self, S_dist,similarity):

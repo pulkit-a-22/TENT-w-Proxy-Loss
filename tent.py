@@ -179,17 +179,17 @@ class TentProxy(nn.Module):
         if self.episodic:
             self.reset()
 
-        for _ in range(self.steps):
-            outputs, loss_value = forward_and_adapt_proxy(
-                x=x,
-                student_model=self.student_model,
-                teacher_model=self.teacher_model,
-                optimizer=self.optimizer,
-                momentum_updater = self.momentum_updater,
-                proxy_loss_fn=self.proxy_loss_fn,
-                epoch=self.epoch
-            )
-            self.loss_history.append(loss_value)
+        outputs, loss_value = forward_and_adapt_proxy(
+            x=x,
+            student_model=self.student_model,
+            teacher_model=self.teacher_model,
+            optimizer=self.optimizer,
+            momentum_updater = self.momentum_updater,
+            proxy_loss_fn=self.proxy_loss_fn,
+            epoch=self.epoch
+
+        self.loss_history.append(loss_value)
+        
         return outputs
 
     def reset(self):

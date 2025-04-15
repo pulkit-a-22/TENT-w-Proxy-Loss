@@ -26,6 +26,13 @@ from torchvision.transforms import ToTensor
 import time
 from proxy_net.resnet import Resnet18
 from contextlib import redirect_stdout
+from custom_sampler import NNBatchSampler  # import the custom sampler defined above
+from torch.utils.data import TensorDataset, DataLoader
+from cifar10c_custom import CIFAR10_C, test_transforms
+
+import os
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -36,115 +43,122 @@ def my_custom_accuracy(logits: torch.Tensor, targets: torch.Tensor) -> float:
     return correct / targets.size(0)
 
 def evaluate(description):
-    #print("[DEBUG] Entering evaluate()")
+    load_cfg_fom_args(description)
     total_eval_start = time.time()
-
-    #load_cfg_fom_args(description)
-    #print(f"[DEBUG] Loaded config in {time.time() - total_eval_start:.3f}s")
-
-    setup_start = time.time()
-    ############################################################
-    # 1) If "tent": use the original code (RobustBench model)  
-    ############################################################
-    if cfg.MODEL.ADAPTATION == "tent":
-        logger.info("test-time adaptation: TENT")
-        base_model = load_model(
-            cfg.MODEL.ARCH,
-            cfg.CKPT_DIR,
-            cfg.CORRUPTION.DATASET,
-            ThreatModel.corruptions
-        ).cuda()
-        model = setup_tent(base_model)
-
-    ############################################################
-    # 2) If "source", "norm", or other original modes          
-    ############################################################
-    elif cfg.MODEL.ADAPTATION == "source":
-        logger.info("test-time adaptation: NONE (source)")
-        base_model = load_model(
-            cfg.MODEL.ARCH,
-            cfg.CKPT_DIR,
-            cfg.CORRUPTION.DATASET,
-            ThreatModel.corruptions
-        ).cuda()
-        model = setup_source(base_model)
-
-    elif cfg.MODEL.ADAPTATION == "norm":
-        logger.info("test-time adaptation: NORM")
-        base_model = load_model(
-            cfg.MODEL.ARCH,
-            cfg.CKPT_DIR,
-            cfg.CORRUPTION.DATASET,
-            ThreatModel.corruptions
-        ).cuda()
-        model = setup_norm(base_model)
-
-    ############################################################
-    # 3) If "tent_proxy": use your proxy repository's model + 
-    #    proxy loss, adapting BN parameters similar to TENT.
-    ############################################################
-    elif cfg.MODEL.ADAPTATION == "tent_proxy":
+    # Setup model based on adaptation mode.
+    if cfg.MODEL.ADAPTATION == "tent_proxy":
         logger.info("test-time adaptation: TENT-PROXY")
-        # Use Resent18 from  proxy repository
-
-        from proxy_net.resnet import Resnet18
         base_model = Resnet18(
-            embedding_size=512,
-            bg_embedding_size=1024,
-            pretrained=False,   # or False, per your preference
+            embedding_size=cfg.PROXY.EMBEDDING_SIZE,
+            bg_embedding_size=cfg.PROXY.BG_EMBEDDING_SIZE,
+            pretrained=False,
             is_norm=True,
             is_student=True,
             bn_freeze=False
         ).cuda()
-
         checkpoint = torch.load("cifar10_pretrained_resnet18.pth")
         base_model.load_state_dict(checkpoint, strict=True)
-        
-        model = setup_tent_proxy(base_model)
-
+        model = setup_tent_proxy(base_model)  # This now returns a TentProxy with a reset() method.
     else:
-        raise ValueError(f"Unknown adaptation method: {cfg.MODEL.ADAPTATION}")
-    
-    #print(f"[DEBUG] Model setup took {time.time() - setup_start:.3f}s")
+        # Implement other branches as needed.
+        raise ValueError("This testing script is configured for tent_proxy only.")
 
-    # Evaluate on each severity & corruption type.
-    for severity in cfg.CORRUPTION.SEVERITY:
-        for corruption_type in cfg.CORRUPTION.TYPE:
+    # For faster testing, restrict to only gaussian_noise with severity 5.
+    corruption_type = "gaussian_noise"
+    severity = 5
+    logger.info(f"Testing on {corruption_type} at severity {severity}")
 
-            loop_start = time.time()
-            #print(f"[DEBUG] Starting evaluation on {corruption_type} severity={severity}")
+    # Define the cache directory (adjust as needed).
+    cache_dir = os.path.join(cfg.SAVE_DIR, "cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    cache_file = os.path.join(cache_dir, f"cached_cifar10c_{corruption_type}_{severity}.pt")
 
-            try:
-                reset_start = time.time()
-                model.reset()
-                print("resetting model")
-                #print(f"[DEBUG] model.reset() took {time.time() - reset_start:.3f}s")
-            except Exception as e:
-                logger.warning("not resetting model: " + str(e))
-            
-            data_start = time.time()
-            x_test, y_test = load_cifar10c(
-                cfg.CORRUPTION.NUM_EX,
-                severity,
-                cfg.DATA_DIR,
-                False,
-                [corruption_type]
+
+    #REVIEWCHANGE -- dataset importer from repository
+    # Load dataset from cache if available, else create and cache it.
+    if os.path.exists(cache_file):
+        logger.info(f"Loading cached dataset from {cache_file}")
+        cached_data = torch.load(cache_file)
+        dataset = cached_data["dataset"]
+    else:
+        logger.info("Creating new CIFAR10-C dataset instance...")
+
+        #MAKE CHANGE -- DIFFERENT DATASETS FOR TRAIN AND EVAL 
+        dataset = CIFAR10_C(
+            root=cfg.DATA_DIR,
+            corruption=corruption_type,
+            level=severity,
+            transform=test_transforms
+        )
+        
+        logger.info(f"Dataset created with {len(dataset)} samples. Caching to {cache_file}.")
+        torch.save({"dataset": dataset}, cache_file)
+
+    # Create a default loader for feature extraction (for the nearest-neighbor sampler).
+    default_loader = DataLoader(dataset, batch_size=200, shuffle=False, num_workers=4)
+
+    # Choose which model to use for NN feature extraction.
+    model_for_sampling = model.student_model if hasattr(model, "student_model") else model
+
+    # Setup the NNBatchSampler.
+    #REVIEWCHANGE
+    # Instead of using random mini-batches of 200 images, the sampler constructs each batch by selecting a “query” image along with its 10 nearest neighbors
+    #custom_sampler.py
+    nn_sampler = NNBatchSampler(
+        data_source=dataset,
+        model=model_for_sampling,
+        seen_dataloader=default_loader,
+        batch_size=200,      # Total images per batch (must be divisible by nn_per_image)
+        nn_per_image=10,     # Query image and its 10 nearest neighbors.
+        using_feat=True,
+        is_norm=False        # Change if your model already normalizes features.
+    )
+    train_loader = DataLoader(dataset, batch_sampler=nn_sampler, num_workers=8)
+
+    # Adapt the model over 10 epochs (adapt on the whole dataset).
+    #REVIEWCHANGE
+    #The adaptation loop now runs over 10 epochs covering the entire dataset instead of processing only a single pass.
+    #At the beginning of each epoch, the model is “reset” (using the reset method from TentProxy) to ensure continuity and consistency.
+    num_epochs = 10
+    for epoch in range(num_epochs):
+        logger.info(f"Adaptation epoch {epoch+1}/{num_epochs}")
+        for images, _ in train_loader:
+            images = images.cuda()
+            _, loss_value = forward_and_adapt_proxy(
+                images,
+                model.student_model,
+                model.teacher_model,
+                model.optimizer,
+                model.momentum_updater,
+                model.proxy_loss_fn,
+                epoch
             )
-            x_test, y_test = x_test.cuda(), y_test.cuda()
-            #print(f"[DEBUG] Loading + sending data to GPU took {time.time() - data_start:.3f}s")
+            logger.debug(f"Adaptation loss: {loss_value:.4f}")
+        logger.info("Completed adaptation epoch.")
 
-            acc_start = time.time()
-            acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x), x_test, y_test, cfg.TEST.BATCH_SIZE)
-            acc_time = time.time() - acc_start
-            err = 1. - acc
-            #print(f"[DEBUG] {corruption_type}{severity} => acc={acc*100:.2f}%, err={err*100:.2f}%, took {acc_time:.3f}s")
+    # -- Updated evaluation using a DataLoader with batching --
+    logger.info("Building full evaluation tensors from dataset...")
+    # Use a DataLoader for evaluation with a larger batch size and multiple workers.
+    # Instead of iterating over dataset items one at a time, the full evaluation now uses a DataLoader with a higher batch size (256) and multiple workers.
+    eval_loader = DataLoader(dataset, batch_size=256, shuffle=False, num_workers=8)
+    all_imgs = []
+    all_labels = []
+    from tqdm import tqdm
+    for batch_idx, (images, labels) in enumerate(tqdm(eval_loader, desc="Evaluating dataset")):
+        print(f"Processing evaluation batch {batch_idx+1}/{len(eval_loader)}")
+        all_imgs.append(images)
+        all_labels.append(labels)
+    x_full = torch.cat(all_imgs, dim=0).cuda()
+    y_full = torch.cat(all_labels, dim=0).cuda()
 
-            loop_time = time.time() - loop_start
-            #print(f"[DEBUG] Done {corruption_type}{severity} in {loop_time:.3f}s total.\n")
-            logger.info(f"Using {cfg.OPTIM.LR} learning rate and {cfg.PROXY.NUM_DIMS} dims error % [{corruption_type}{severity}]: {err:.2%}")
-    
+    # Evaluate accuracy.
+    acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x),
+                x_full, y_full, cfg.TEST.BATCH_SIZE)
+    logger.info(f"Post-adaptation accuracy for {corruption_type} severity {severity}: {acc*100:.2f}%")
+        
     total_eval_time = time.time() - total_eval_start
-    #print(f"[DEBUG] evaluate() finished. Overall took {total_eval_time:.3f}s total.\n")
+    logger.info(f"Overall evaluation took {total_eval_time:.3f}s")
+
 
 ############################################################
 # Original "source" & "norm" & "tent" setup (unchanged)    
@@ -202,7 +216,7 @@ def setup_tent_proxy(model):
         'embedding_size': 512,
         'bg_embedding_size': 1024,
         #stop using proxies 
-        'num_proxies': 0,
+        'num_proxies': cfg.PROXY.NUM_PROXIES,
         'num_dims': cfg.PROXY.NUM_DIMS,
         'num_neighbors': 20,
         'projected_power': 0.0,

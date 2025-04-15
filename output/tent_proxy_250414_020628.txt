@@ -1,0 +1,24 @@
+[25/04/14 02:06:28] [cifar10c.py:   50]: test-time adaptation: TENT-PROXY
+[25/04/14 02:06:30] [cifar10c.py:   69]: Testing on gaussian_noise at severity 5
+[25/04/14 02:06:30] [cifar10c.py:   78]: Loading cached dataset from ./output/cache/cached_cifar10c_gaussian_noise_5.pt
+[25/04/14 02:06:33] [cifar10c.py:  113]: Adaptation epoch 1/10
+[25/04/14 02:08:56] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:08:56] [cifar10c.py:  113]: Adaptation epoch 2/10
+[25/04/14 02:11:20] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:11:20] [cifar10c.py:  113]: Adaptation epoch 3/10
+[25/04/14 02:13:43] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:13:43] [cifar10c.py:  113]: Adaptation epoch 4/10
+[25/04/14 02:16:06] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:16:06] [cifar10c.py:  113]: Adaptation epoch 5/10
+[25/04/14 02:18:30] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:18:30] [cifar10c.py:  113]: Adaptation epoch 6/10
+[25/04/14 02:20:53] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:20:53] [cifar10c.py:  113]: Adaptation epoch 7/10
+[25/04/14 02:23:17] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:23:17] [cifar10c.py:  113]: Adaptation epoch 8/10
+[25/04/14 02:25:40] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:25:40] [cifar10c.py:  113]: Adaptation epoch 9/10
+[25/04/14 02:28:04] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:28:04] [cifar10c.py:  113]: Adaptation epoch 10/10
+[25/04/14 02:30:27] [cifar10c.py:  129]: Completed adaptation epoch.
+[25/04/14 02:30:27] [cifar10c.py:  131]: Building full evaluation tensors from dataset...
