@@ -1,0 +1,27 @@
+[25/04/14 19:44:07] [cifar10c.py:   55]: test-time adaptation: TENT-PROXY
+[25/04/14 19:44:09] [cifar10c.py:   82]: Creating new full CIFAR10-C dataset instance...
+[25/04/14 19:44:12] [cifar10c.py:   89]: Full dataset created with 10000 samples. Caching to ./output/cache/cached_cifar10c_gaussian_noise_5_full.pt.
+[25/04/14 19:44:12] [cifar10c.py:   97]: Adaptation dataset: 5000 samples; Evaluation dataset: 5000 samples.
+[25/04/14 19:44:24] [cifar10c.py:  121]: Adaptation epoch 1/10
+[25/04/14 19:45:39] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:45:39] [cifar10c.py:  121]: Adaptation epoch 2/10
+[25/04/14 19:46:52] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:46:52] [cifar10c.py:  121]: Adaptation epoch 3/10
+[25/04/14 19:48:05] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:48:05] [cifar10c.py:  121]: Adaptation epoch 4/10
+[25/04/14 19:49:17] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:49:17] [cifar10c.py:  121]: Adaptation epoch 5/10
+[25/04/14 19:50:30] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:50:30] [cifar10c.py:  121]: Adaptation epoch 6/10
+[25/04/14 19:51:43] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:51:43] [cifar10c.py:  121]: Adaptation epoch 7/10
+[25/04/14 19:52:56] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:52:56] [cifar10c.py:  121]: Adaptation epoch 8/10
+[25/04/14 19:54:09] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:54:09] [cifar10c.py:  121]: Adaptation epoch 9/10
+[25/04/14 19:55:22] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:55:22] [cifar10c.py:  121]: Adaptation epoch 10/10
+[25/04/14 19:56:35] [cifar10c.py:  134]: Completed adaptation epoch.
+[25/04/14 19:56:35] [cifar10c.py:  137]: Building full evaluation tensors from evaluation dataset...
+[25/04/14 19:58:59] [cifar10c.py:  152]: Post-adaptation accuracy for gaussian_noise severity 5: 71.76%
+[25/04/14 19:58:59] [cifar10c.py:  155]: Overall evaluation took 892.468s

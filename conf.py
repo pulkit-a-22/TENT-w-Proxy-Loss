@@ -125,6 +125,12 @@ _C.LOG_DEST = "log.txt"
 # Log datetime
 _C.LOG_TIME = ''
 
+# ---------------------------------- Data Split Options ---------------------------
+_C.DATA = CfgNode()
+_C.DATA.TRAIN_SPLIT = "train"   # Use the training split for adaptation
+_C.DATA.EVAL_SPLIT = "test"     # Use the test split for evaluation
+
+
 
 
 # # Config destination (in SAVE_DIR)

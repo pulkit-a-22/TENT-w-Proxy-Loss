@@ -187,9 +187,10 @@ class TentProxy(nn.Module):
             momentum_updater = self.momentum_updater,
             proxy_loss_fn=self.proxy_loss_fn,
             epoch=self.epoch
+        )
 
         self.loss_history.append(loss_value)
-        
+
         return outputs
 
     def reset(self):

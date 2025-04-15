@@ -28,7 +28,8 @@ from proxy_net.resnet import Resnet18
 from contextlib import redirect_stdout
 from custom_sampler import NNBatchSampler  # import the custom sampler defined above
 from torch.utils.data import TensorDataset, DataLoader
-from cifar10c_custom import CIFAR10_C, test_transforms
+from cifar10c_custom import CIFAR10_C, test_transforms, train_transforms
+
 
 import os
 
@@ -45,6 +46,10 @@ def my_custom_accuracy(logits: torch.Tensor, targets: torch.Tensor) -> float:
 def evaluate(description):
     load_cfg_fom_args(description)
     total_eval_start = time.time()
+
+    corruption_type = "gaussian_noise"
+    severity = 5
+
     # Setup model based on adaptation mode.
     if cfg.MODEL.ADAPTATION == "tent_proxy":
         logger.info("test-time adaptation: TENT-PROXY")
@@ -62,50 +67,42 @@ def evaluate(description):
     else:
         # Implement other branches as needed.
         raise ValueError("This testing script is configured for tent_proxy only.")
+    
 
-    # For faster testing, restrict to only gaussian_noise with severity 5.
-    corruption_type = "gaussian_noise"
-    severity = 5
-    logger.info(f"Testing on {corruption_type} at severity {severity}")
-
-    # Define the cache directory (adjust as needed).
+    # -------------------- Load Full CIFAR10-C Dataset --------------------
     cache_dir = os.path.join(cfg.SAVE_DIR, "cache")
     os.makedirs(cache_dir, exist_ok=True)
-    cache_file = os.path.join(cache_dir, f"cached_cifar10c_{corruption_type}_{severity}.pt")
+    full_cache_file = os.path.join(cache_dir, f"cached_cifar10c_{corruption_type}_{severity}_full.pt")
 
-
-    #REVIEWCHANGE -- dataset importer from repository
-    # Load dataset from cache if available, else create and cache it.
-    if os.path.exists(cache_file):
-        logger.info(f"Loading cached dataset from {cache_file}")
-        cached_data = torch.load(cache_file)
-        dataset = cached_data["dataset"]
+    if os.path.exists(full_cache_file):
+        logger.info(f"Loading cached full dataset from {full_cache_file}")
+        cached_data = torch.load(full_cache_file)
+        full_dataset = cached_data["dataset"]
     else:
-        logger.info("Creating new CIFAR10-C dataset instance...")
-
-        #MAKE CHANGE -- DIFFERENT DATASETS FOR TRAIN AND EVAL 
-        dataset = CIFAR10_C(
+        logger.info("Creating new full CIFAR10-C dataset instance...")
+        full_dataset = CIFAR10_C(
             root=cfg.DATA_DIR,
             corruption=corruption_type,
             level=severity,
-            transform=test_transforms
+            transform=test_transforms   # Use test transforms as default here
         )
-        
-        logger.info(f"Dataset created with {len(dataset)} samples. Caching to {cache_file}.")
-        torch.save({"dataset": dataset}, cache_file)
+        logger.info(f"Full dataset created with {len(full_dataset)} samples. Caching to {full_cache_file}.")
+        torch.save({"dataset": full_dataset}, full_cache_file)
 
-    # Create a default loader for feature extraction (for the nearest-neighbor sampler).
-    default_loader = DataLoader(dataset, batch_size=200, shuffle=False, num_workers=4)
+    # -------------------- Split Dataset into Adaptation and Evaluation --------------------
+    from torch.utils.data import random_split
+    n_total = len(full_dataset)
+    n_train = n_total // 2  # e.g., 50/50 split (you can change this ratio as needed)
+    adapt_dataset, eval_dataset = random_split(full_dataset, [n_train, n_total - n_train])
+    logger.info(f"Adaptation dataset: {len(adapt_dataset)} samples; Evaluation dataset: {len(eval_dataset)} samples.")
 
-    # Choose which model to use for NN feature extraction.
+    # Create a default loader for feature extraction from the adaptation dataset.
+    default_loader = DataLoader(adapt_dataset, batch_size=200, shuffle=False, num_workers=4)
     model_for_sampling = model.student_model if hasattr(model, "student_model") else model
 
-    # Setup the NNBatchSampler.
-    #REVIEWCHANGE
-    # Instead of using random mini-batches of 200 images, the sampler constructs each batch by selecting a “query” image along with its 10 nearest neighbors
-    #custom_sampler.py
+    # Setup the NNBatchSampler using the adaptation dataset.
     nn_sampler = NNBatchSampler(
-        data_source=dataset,
+        data_source=adapt_dataset,
         model=model_for_sampling,
         seen_dataloader=default_loader,
         batch_size=200,      # Total images per batch (must be divisible by nn_per_image)
@@ -113,7 +110,7 @@ def evaluate(description):
         using_feat=True,
         is_norm=False        # Change if your model already normalizes features.
     )
-    train_loader = DataLoader(dataset, batch_sampler=nn_sampler, num_workers=8)
+    train_loader = DataLoader(adapt_dataset, batch_sampler=nn_sampler, num_workers=8)
 
     # Adapt the model over 10 epochs (adapt on the whole dataset).
     #REVIEWCHANGE
@@ -136,11 +133,9 @@ def evaluate(description):
             logger.debug(f"Adaptation loss: {loss_value:.4f}")
         logger.info("Completed adaptation epoch.")
 
-    # -- Updated evaluation using a DataLoader with batching --
-    logger.info("Building full evaluation tensors from dataset...")
-    # Use a DataLoader for evaluation with a larger batch size and multiple workers.
-    # Instead of iterating over dataset items one at a time, the full evaluation now uses a DataLoader with a higher batch size (256) and multiple workers.
-    eval_loader = DataLoader(dataset, batch_size=256, shuffle=False, num_workers=8)
+    # -------------------- Evaluation on the Evaluation Dataset --------------------
+    logger.info("Building full evaluation tensors from evaluation dataset...")
+    eval_loader = DataLoader(eval_dataset, batch_size=256, shuffle=False, num_workers=8)
     all_imgs = []
     all_labels = []
     from tqdm import tqdm
@@ -153,7 +148,7 @@ def evaluate(description):
 
     # Evaluate accuracy.
     acc = accuracy(lambda x: model(x)[0] if isinstance(model(x), tuple) else model(x),
-                x_full, y_full, cfg.TEST.BATCH_SIZE)
+                   x_full, y_full, cfg.TEST.BATCH_SIZE)
     logger.info(f"Post-adaptation accuracy for {corruption_type} severity {severity}: {acc*100:.2f}%")
         
     total_eval_time = time.time() - total_eval_start
